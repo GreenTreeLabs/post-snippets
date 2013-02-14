@@ -86,7 +86,12 @@ class Post_Snippets_Settings extends Post_Snippets_Base
 					$new_snippets[$key]['title'] = trim($_POST[$key.'_title']);
 					$new_snippets[$key]['vars'] = str_replace(' ', '', trim($_POST[$key.'_vars']) );
 					$new_snippets[$key]['shortcode'] = isset($_POST[$key.'_shortcode']) ? true : false;
-					$new_snippets[$key]['php'] = isset($_POST[$key.'_php']) ? true : false;
+
+					if ( self::$php_execution_enabled )
+						$new_snippets[$key]['php'] = isset($_POST[$key.'_php']) ? true : false;
+					else
+						$new_snippets[$key]['php'] = isset($snippets[$key]['php']) ? $snippets[$key]['php'] : false;
+
 					$new_snippets[$key]['wptexturize'] = isset($_POST[$key.'_wptexturize']) ? true : false;
 
 					$new_snippets[$key]['snippet'] = wp_specialchars_decode( trim(stripslashes($_POST[$key.'_snippet'])), ENT_NOQUOTES);
@@ -258,8 +263,10 @@ class Post_Snippets_Settings extends Post_Snippets_Base
 
 			echo '<br/><strong>Shortcode Options:</strong><br/>';
 
-			$this->checkbox(__('PHP Code', 'post-snippets'), $key.'_php',
-							$snippet['php']);
+			if ( self::$php_execution_enabled ) {
+				$this->checkbox(__('PHP Code', 'post-snippets'), $key.'_php',
+								$snippet['php']);
+			}
 
 			$wptexturize = isset( $snippet['wptexturize'] ) ? $snippet['wptexturize'] : false;
 			$this->checkbox('wptexturize', $key.'_wptexturize',	$wptexturize);

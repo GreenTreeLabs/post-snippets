@@ -3,7 +3,7 @@ Contributors: artstorm
 Tags: post, admin, snippet, shortcode, html, custom, page, dynamic, editor, php, code
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 2.0
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,13 @@ Please create an issue that conforms with [necolas's guidelines](https://github.
 Please visit the [Support Forum](http://wordpress.org/tags/post-snippets?forum_id=10 "Use this for support and feature requests") 
 for questions, answers, support and feature requests.
 
+= How can I disable the PHP Code Execution feature? =
+
+﻿To disable the "PHP Code" execution feature in this plugin, add the following code your theme's functions.php file:
+`add_filter('post_snippets_php_execution_enabled', '__return_false');`
+
+This is useful if you are using this plugin for client sites, and don't want your clients to be able to use PHP code in a post snippet.
+
 = How can I contribute to the plugin? =
 
 If you want to contribute improved code or new features for the plugin. Please
@@ -111,6 +118,7 @@ Contributions are appreciated and encouraged.
 == Changelog ==
 
 = Version X.X - XX XX 201X =
+ * Allow other plugins or themes to disable the PHP Code execution feature using the new 'post_snippets_php_execution_enabled' filter.
  * Migrated to GitHub to maintain the code in development. [Post Snippets at GitHub](https://github.com/artstorm/post-snippets).
  * Included Polish translation (pl_PL) by Tomasz Wesołowski.
  * Included Slovak translation (sk_SK) by Branco Radenovich.

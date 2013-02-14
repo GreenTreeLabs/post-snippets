@@ -18,6 +18,7 @@ class Post_Snippets_Help extends Post_Snippets_Base
 	 */
 	public function __construct( $option_page )
 	{
+		parent::__construct();
 		// If WordPress is 3.3 or higher, use the new Help API, otherwise call
 		// the old contextual help action.
 		global $wp_version;
@@ -46,11 +47,13 @@ class Post_Snippets_Help extends Post_Snippets_Base
 			'title'   => __( 'Shortcode', 'post-snippets' ),
 			'content' => $this->help_shortcode()
 		) );
-		$screen->add_help_tab( array(
-			'id'      => 'php-plugin-help',
-			'title'   => __( 'PHP', 'post-snippets' ),
-			'content' => $this->help_php()
-		) );
+		if ( self::$php_execution_enabled ) {
+			$screen->add_help_tab( array(
+				'id'      => 'php-plugin-help',
+				'title'   => __( 'PHP', 'post-snippets' ),
+				'content' => $this->help_php()
+			) );
+		}
 		$screen->add_help_tab( array(
 			'id'      => 'advanced-plugin-help',
 			'title'   => __( 'Advanced', 'post-snippets' ),

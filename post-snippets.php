@@ -3,7 +3,7 @@
 Plugin Name: Post Snippets
 Plugin URI: http://wpstorm.net/wordpress-plugins/post-snippets/
 Description: Build a library with snippets of HTML, PHP code or reoccurring text that you often use in your posts. Variables to replace parts of the snippet on insert can be used. The snippets can be inserted as-is or as shortcodes.
-Version: 2.0
+Version: 2.0.1
 Author: Johan Steen
 Author URI: http://johansteen.se/
 Text Domain: post-snippets 
@@ -32,6 +32,14 @@ class Post_Snippets_Base {
 	// Constants
 	const PLUGIN_OPTION_KEY = 'post_snippets_options';
 	const USER_OPTION_KEY   = 'post_snippets';
+
+	static $php_execution_enabled;
+
+	public function __construct() {
+		// Allow other plugins to disable the PHP Code execution feature.
+		// See http://wordpress.org/extend/plugins/post-snippets/faq/ for more details.
+		self::$php_execution_enabled = apply_filters('post_snippets_php_execution_enabled', true);
+	}
 }
 
 /**
@@ -45,6 +53,7 @@ class Post_Snippets extends Post_Snippets_Base
 	// -------------------------------------------------------------------------
 
 	public function __construct() {
+		parent::__construct();
 		// Define the domain and path for translations
 		$rel_path = dirname(plugin_basename($this->get_File())).'/languages/';
 		load_plugin_textdomain(	'post-snippets', false, $rel_path );
@@ -575,6 +584,9 @@ function edOpenPostSnippets(myField) {
 	 */
 	public static function php_eval( $content )
 	{
+		if ( !self::$php_execution_enabled )
+			return $content;
+
 		$content = stripslashes($content);
 
 		ob_start();
