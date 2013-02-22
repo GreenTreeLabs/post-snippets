@@ -3,12 +3,12 @@
 Plugin Name: Post Snippets
 Plugin URI: http://wpstorm.net/wordpress-plugins/post-snippets/
 Description: Build a library with snippets of HTML, PHP code or reoccurring text that you often use in your posts. Variables to replace parts of the snippet on insert can be used. The snippets can be inserted as-is or as shortcodes.
-Version: 2.0.1
+Version: 2.1
 Author: Johan Steen
 Author URI: http://johansteen.se/
 Text Domain: post-snippets 
 
-Copyright 2009-2012 Johan Steen  (email : artstorm [at] gmail [dot] com)
+Copyright 2009-2013 Johan Steen  (email : artstorm [at] gmail [dot] com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -530,7 +530,9 @@ function edOpenPostSnippets(myField) {
 					$vars = explode(",",$snippet['vars']);
 					$vars_str = '';
 					foreach ($vars as $var) {
-						$vars_str = $vars_str . '"'.$var.'" => "",';
+						$default_value = '';
+						list($variable_name,$default_value) = explode('=', $var);
+						$vars_str .= '"'.$variable_name.'" => "'.$default_value.'",';
 					}
 
 					// Get the wptexturize setting
