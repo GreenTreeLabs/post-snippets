@@ -5,7 +5,7 @@ Plugin URI: http://wpstorm.net/wordpress-plugins/post-snippets/
 Description: Build a library with snippets of HTML, PHP code or reoccurring text that you often use in your posts. Variables to replace parts of the snippet on insert can be used. The snippets can be inserted as-is or as shortcodes.
 Author: Johan Steen
 Author URI: http://johansteen.se/
-Version: 2.1.1
+Version: 2.1.2
 License: GPLv2 or later
 Text Domain: post-snippets 
 
@@ -361,7 +361,7 @@ class PostSnippets
         # Prepare the snippets and shortcodes into javascript variables
         # so they can be inserted into the editor, and get the variables replaced
         # with user defined strings.
-        $snippets = get_option( self::OPTION_DB_KEY );
+        $snippets = get_option( self::OPTION_DB_KEY, array() );
         foreach ($snippets as $key => $snippet) {
             if ($snippet['shortcode']) {
                 # Build a long string of the variables, ie: varname1={varname1} varname2={varname2}
@@ -502,7 +502,7 @@ function edOpenPostSnippets(myField) {
             }
         }
 
-        $data = array('snippets' => get_option(self::OPTION_DB_KEY));
+        $data = array('snippets' => get_option(self::OPTION_DB_KEY, array()));
         echo PostSnippets_View::render(
             plugin_dir_path(__FILE__).'views/jquery-ui-dialog.php',
             $data
@@ -682,7 +682,7 @@ function edOpenPostSnippets(myField) {
      */
     public static function getSnippet( $snippet_name, $snippet_vars = '' )
     {
-        $snippets = get_option( self::OPTION_DB_KEY );
+        $snippets = get_option( self::OPTION_DB_KEY, array() );
         for ($i = 0; $i < count($snippets); $i++) {
             if ($snippets[$i]['title'] == $snippet_name) {
                 parse_str( htmlspecialchars_decode($snippet_vars), $snippet_output );

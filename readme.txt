@@ -119,6 +119,9 @@ Contributions are appreciated and encouraged.
 
 == Changelog ==
 
+= Version 2.1.2 - dd mm 2013 =
+ * Fixes a PHP warning that occurred when no post snippets exist.
+
 = Version 2.1.1 - 23 Feb 2013 =
  * Fixes a bug that PHP snippets called an old class definition.
 
