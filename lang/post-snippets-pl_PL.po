@@ -4,341 +4,67 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Post Snippets 1.9.7\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/post-snippets\n"
-"POT-Creation-Date: 2013-01-18 19:05+0100\n"
-"PO-Revision-Date: 2013-01-18 20:51+0100\n"
-"Last-Translator: Tomasz Wesołowski <twesolowski@grafeina.pl>\n"
+"POT-Creation-Date: 2013-10-08 16:07+0100\n"
+"PO-Revision-Date: 2013-10-08 16:08+0100\n"
+"Last-Translator: Tomasz Wesołowski <tomek@ittw.pl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.3\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-KeywordsList: _e;__;_x\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../post-snippets.php:99
+#: ../lib/PostSnippets/Admin.php:39
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: ../post-snippets.php:472
-msgid "This snippet is insert only, no variables defined."
-msgstr "Ten snippet nie posiada parametrów. Możesz go tylko wstawić."
-
-#: ../classes/help.php:41 ../classes/help.php:256
-msgid "Basic"
-msgstr "Podstawowe"
-
-#: ../classes/help.php:46 ../classes/help.php:258 ../classes/settings.php:256
-msgid "Shortcode"
-msgstr "Shortcode"
-
-#: ../classes/help.php:51 ../classes/help.php:260
-msgid "PHP"
-msgstr "PHP"
-
-#: ../classes/help.php:56 ../classes/help.php:262
-msgid "Advanced"
-msgstr "Zaawansowane"
-
-#: ../classes/help.php:70
-msgid "For more information:"
-msgstr "Więcej informacji:"
-
-#: ../classes/help.php:74
-msgid "Post Snippets Documentation"
-msgstr "Dokumentacja"
-
-#: ../classes/help.php:78
-msgid "Support Forums"
-msgstr "Forum"
-
-#: ../classes/help.php:91 ../classes/settings.php:225
-#: ../classes/settings.php:234
-msgid "Title"
-msgstr "Nazwa"
-
-#: ../classes/help.php:94
-msgid ""
-"Give the snippet a title that helps you identify it in the post editor. This "
-"also becomes the name of the shortcode if you enable that option"
-msgstr ""
-"Nazwa snippeta pomoże odnaleźć go w edytorze treści. Jest to także nazwa "
-"funkcji shortcode (jeżeli wybierzesz taką opcję)"
-
-#: ../classes/help.php:98 ../classes/settings.php:226
-#: ../classes/settings.php:235 ../classes/settings.php:354
-msgid "Variables"
-msgstr "Zmienne"
-
-#: ../classes/help.php:101
-msgid ""
-"A comma separated list of custom variables you can reference in your "
-"snippet. A variable can also be assigned a default value that will be used "
-"in the insert window by using the equal sign, variable=default."
-msgstr ""
-"Rozdzielona przecinkami lista zmiennych snippeta. Domyślną wartość zmiennej "
-"możesz nadać używająć znaku równości, zmienna=wartość_domyślna"
-
-#: ../classes/help.php:104 ../classes/help.php:115 ../classes/help.php:230
-msgid "Example"
-msgstr "Przykład"
-
-#: ../classes/help.php:109 ../classes/settings.php:227
-#: ../classes/settings.php:236 ../classes/settings.php:368
-msgid "Snippet"
-msgstr "Snippet"
-
-#: ../classes/help.php:112
-msgid ""
-"This is the block of text, HTML or PHP to insert in the post or as a "
-"shortcode. If you have entered predefined variables you can reference them "
-"from the snippet by enclosing them in {} brackets."
-msgstr ""
-"Blok teksu, kodu HTML lub PHP, który będzie wstawiony jako shortcode. "
-"Zdefiniowane zmienne możesz  wstawić używając nawiasów klamrowych {}."
-
-#: ../classes/help.php:117
-msgid ""
-"To reference the variables in the example above, you would enter {url} and "
-"{name}. So if you enter this snippet:"
-msgstr ""
-"Aby użyć zmiennych z powyższego przykładu, wykorzystaj  {url} i {name}.  "
-"Jeżeli wstawisz:"
-
-#: ../classes/help.php:121
-msgid ""
-"You will get the option to replace url and name on insert if they are "
-"defined as variables."
-msgstr ""
-"będziesz mógł podać  URL {url} i nazwę {name} w momencie wstawiania do "
-"treści (jeżeli te pola zostały zdefiniowane jako zmienne)."
-
-#: ../classes/help.php:125 ../classes/settings.php:270
-msgid "Description"
-msgstr "Opis"
-
-#: ../classes/help.php:128
-msgid ""
-"An optional description for the Snippet. If filled out, the description will "
-"be displayed in the snippets insert window in the post editor."
-msgstr ""
-"Opcjonalny opis Snippeta. Zostanie wyświetlony w oknie wstawiania snippeta w "
-"edytorze treści."
-
-#: ../classes/help.php:141
-msgid ""
-"When enabling the shortcode checkbox, the snippet is no longer inserted "
-"directly but instead inserted as a shortcode. The obvious advantage of this "
-"is of course that you can insert a block of text or code in many places on "
-"the site, and update the content from one single place."
-msgstr ""
-"Zaznaczenie opcji Shortcode spowoduje, że snippet nie zostanie wstawiony "
-"bezpośrednio lecz użyty jak shortcode. Podstawową zaletą tej opcji jest "
-"fakt, że możesz wielokrotnie wstawić kod do wielu postów i kontrolować ich "
-"działanie w jednym miejscu."
-
-#: ../classes/help.php:145
-msgid ""
-"The name to use the shortcode is the same as the title of the snippet "
-"(spaces are not allowed). When inserting a shortcode snippet, the shortcode "
-"and not the content will be inserted in the post."
-msgstr ""
-"Nazwa kodu shortcode będzie taka sama jak nazwa snippeta (nie używaj "
-"spacji). Wstawienie snippeta z opcją shortcode spowoduje wstawienie "
-"znacznika shortcode, nie kodu snippeta."
-
-#: ../classes/help.php:148
-msgid ""
-"If you enclose the shortcode in your posts, you can access the enclosed "
-"content by using the variable {content} in your snippet. The {content} "
-"variable is reserved, so don't use it in the variables field."
-msgstr ""
-"Jeżeli otoczysz dowolną  treść kodem shortcode, możesz użyć zawartości za "
-"pomocą zmiennej {content}. Zmienna {content} jest zastrzeżona, nie używaj "
-"jej w snippetach."
-
-#: ../classes/help.php:152 ../classes/settings.php:366
-msgid "Options"
-msgstr "Opcje"
-
-#: ../classes/help.php:155
-msgid "See the dedicated help section for information about PHP shortcodes."
-msgstr "Zajrzyj do działu pomocy o PHP."
-
-#: ../classes/help.php:158
-#, php-format
-msgid ""
-"Before the shortcode is outputted, it can optionally be formatted with %s, "
-"to transform quotes to smart quotes, apostrophes, dashes, ellipses, the "
-"trademark symbol, and the multiplication symbol."
-msgstr ""
-"Kod zwracany przez shortcode zostanie dodatkowo przefiltrowany przez funkcję "
-"%s. "
-
-#: ../classes/help.php:171
-msgid ""
-"Snippets defined as shortcodes can optionally also be evaluated as PHP Code "
-"by enabling the PHP checkbox. PHP snippets is only available when treating "
-"the snippet as a shortcode."
-msgstr ""
-"Zaznaczenie opcji 'Kod PHP' spowoduje przetworzenie snippeta jako kodu PHP.  "
-"Snippety będą interpretowane jako kod PHP wyłącznie po włączeniu opcji "
-"Shortcode."
-
-#: ../classes/help.php:174
-msgid "Example PHP Snippet"
-msgstr "Przykładowy Snippet PHP"
-
-#: ../classes/help.php:183
-msgid ""
-"With a snippet defined like the one above, you can call it with its "
-"shortcode definition in a post. Let's pretend that the example snippet is "
-"named phpcode and have one variable defined loop_me, then it would be called "
-"like this from a post:"
-msgstr ""
-"Snippeta zdefionawanego jak ten powyżej możej użyć jako kodu shortcode. "
-"Zakładając, że przykładowy snippet został nazwany phpcode i posiada zmienną "
-"loop_me, możesz go użyć w treści posta w następujący sposób:"
-
-#: ../classes/help.php:189
-msgid ""
-"When the shortcode is executed the loop_me variable will be replaced with "
-"the string supplied in the shortcode and then the PHP code will be "
-"evaluated. (Outputting the string five times in this case. Wow!)"
-msgstr ""
-"W chwili wykonania kodu shortcode, zmienna loop_me zostanie zastąpiona przez "
-"wprowadzoną wartość i kod PHP zostanie przetworzony (wyświetli 5 razy "
-"wprowadzoną wartość. Wa wa wee wa!)."
-
-#: ../classes/help.php:192
-msgid ""
-"Note the evaluation order, any snippet variables will be replaced before the "
-"snippet is evaluated as PHP code. Also note that a PHP snippet don't need to "
-"be wrapped in &lt;?php #code; ?&gt;."
-msgstr ""
-"Zwróć uwagę na kolejność interpretacji zmiennych. Zmienne snippeta zostaną "
-"zastąpione podanymi wartościami przed wykonaniem kodu jako PHP. Pamiętaj "
-"także, że kod nie musi być zawarty w znacznikach   &lt;?php #code; ?&gt;."
-
-#: ../classes/help.php:205
-msgid ""
-"You can retrieve a Post Snippet directly from PHP, in a theme for instance, "
-"by using the get_post_snippet() function."
-msgstr ""
-"Możesz pobrać Snippeta za pomocą  PHP (np. w pliku motywu). Użyj funkcji "
-"get_post_snippet()."
-
-#: ../classes/help.php:209
-msgid "Usage"
-msgstr "Użycie"
-
-#: ../classes/help.php:217
-msgid "Parameters"
-msgstr "Parametry"
-
-#: ../classes/help.php:221
-msgid "(string) (required) The name of the snippet to retrieve."
-msgstr "(strong)(wymagany) Nazwa snippeta, który chcesz pobrać."
-
-#: ../classes/help.php:226
-msgid ""
-"(string) The variables to pass to the snippet, formatted as a query string."
-msgstr "(string) Zmienne snippeta przekazane jako 'query string'"
-
-#: ../classes/import-export.php:91
-msgid "Import"
-msgstr "Import"
-
-#: ../classes/import-export.php:93
-msgid ""
-"Import snippets from a post-snippets-export.zip file. Importing overwrites "
-"any existing snippets."
-msgstr ""
-"Zaimportuj Snippety z pliku post-snippets-export.zip. Import nadpisze "
-"instniejące Snippety."
-
-#: ../classes/import-export.php:97
-msgid "Import Snippets"
-msgstr "Importuj"
-
-#: ../classes/import-export.php:123
-msgid "Snippets successfully imported."
-msgstr "Snippety zostały zaimportowane."
-
-#: ../classes/import-export.php:125 ../classes/import-export.php:129
-#: ../classes/import-export.php:131
-msgid "Snippets could not be imported:"
-msgstr "Snippety nie mogły zostać zaimportowane."
-
-#: ../classes/import-export.php:125
-msgid "Unzipping failed."
-msgstr "Rozpakowanie zakończone niepowodzeniem."
-
-#: ../classes/import-export.php:131
-msgid "Upload failed."
-msgstr "Upload nieudany."
-
-#: ../classes/settings.php:41
+#: ../lib/PostSnippets/Admin.php:113
 msgid "A snippet named Untitled has been added."
 msgstr "Dodano snippet 'Untitled'"
 
-#: ../classes/settings.php:57
+#: ../lib/PostSnippets/Admin.php:133
 msgid "Nothing selected to delete."
 msgstr "Niczego nie zaznaczono do usunięcia."
 
-#: ../classes/settings.php:70
+#: ../lib/PostSnippets/Admin.php:149
 msgid "Selected snippets have been deleted."
 msgstr "Zaznaczone snippety zostały usunięte."
 
-#: ../classes/settings.php:96
+#: ../lib/PostSnippets/Admin.php:184
 msgid "Snippets have been updated."
 msgstr "Zmiany zostały zapisane."
 
-#: ../classes/settings.php:189
+#: ../lib/PostSnippets/Admin.php:264
 msgid "Manage Snippets"
 msgstr "Zarządzaj"
 
-#: ../classes/settings.php:189 ../classes/settings.php:298
+#: ../lib/PostSnippets/Admin.php:264 ../lib/PostSnippets/Admin.php:307
 msgid "Import/Export"
 msgstr "Import/Eksport"
 
-#: ../classes/settings.php:197
+#: ../lib/PostSnippets/Admin.php:272
 msgid "Use the help dropdown button for additional information."
 msgstr ""
 "Więcej informacji znajdziesz w zakładce Pomoc (rozwijane menu w prawym "
 "górnym rogu)."
 
-#: ../classes/settings.php:261
-msgid "PHP Code"
-msgstr "Kod PHP"
-
-#: ../classes/settings.php:282
-msgid "Update Snippets"
-msgstr "Zaktualizuj"
-
-#: ../classes/settings.php:283
-msgid "Add New Snippet"
-msgstr "Dodaj nowy"
-
-#: ../classes/settings.php:284
-msgid "Delete Selected"
-msgstr "Usuń zaznaczone"
-
-#: ../classes/settings.php:299
+#: ../lib/PostSnippets/Admin.php:308
 msgid "Export"
 msgstr "Exportuj"
 
-#: ../classes/settings.php:302
+#: ../lib/PostSnippets/Admin.php:311
 msgid "Export your snippets for backup or to import them on another site."
 msgstr ""
 "Wyeksportuj swoje Snippety dla bezpieczeństwa lub użycia ich na innej "
 "stronie."
 
-#: ../classes/settings.php:304
+#: ../lib/PostSnippets/Admin.php:313
 msgid "Export Snippets"
 msgstr "Exportuj Snippety"
 
-#: ../classes/settings.php:327
+#: ../lib/PostSnippets/Admin.php:336
 msgid ""
 "This is an overview of all snippets defined for this site. These snippets "
 "are inserted into posts from the post editor using the Post Snippets button. "
@@ -351,10 +77,294 @@ msgstr ""
 "To jest lista wszystkich snippetów zdefiniowanych dla tej strony. Możesz je "
 "wstawiać używając przycisku Post Snippets w edytorze treści."
 
-#: ../classes/settings.php:337
+#: ../lib/PostSnippets/Admin.php:346
 msgid "Display rendered snippets"
 msgstr "Pokaż utworzone snippety."
 
-#: ../classes/settings.php:338
+#: ../lib/PostSnippets/Admin.php:347
 msgid "Update"
 msgstr "Zaktualizuj"
+
+#: ../lib/PostSnippets/Admin.php:364 ../views/admin_snippets.php:9
+#: ../views/admin_snippets.php:18 ../views/help_basic.php:6
+msgid "Variables"
+msgstr "Zmienne"
+
+#: ../lib/PostSnippets/Admin.php:380 ../views/help_shortcode.php:13
+msgid "Options"
+msgstr "Opcje"
+
+#: ../lib/PostSnippets/Admin.php:383 ../views/admin_snippets.php:10
+#: ../views/admin_snippets.php:19 ../views/help_basic.php:16
+msgid "Snippet"
+msgstr "Snippet"
+
+#: ../lib/PostSnippets/Help.php:33
+msgid "Basic"
+msgstr "Podstawowe"
+
+#: ../lib/PostSnippets/Help.php:40 ../views/admin_snippets.php:39
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: ../lib/PostSnippets/Help.php:48
+msgid "PHP"
+msgstr "PHP"
+
+#: ../lib/PostSnippets/Help.php:56
+msgid "Advanced"
+msgstr "Zaawansowane"
+
+#: ../lib/PostSnippets/ImportExport.php:38
+msgid "Error: "
+msgstr "Błąd: "
+
+#: ../lib/PostSnippets/ImportExport.php:61
+msgid "Import"
+msgstr "Import"
+
+#: ../lib/PostSnippets/ImportExport.php:67
+msgid ""
+"Import snippets from a post-snippets-export.zip file. Importing overwrites "
+"any existing snippets."
+msgstr ""
+"Zaimportuj Snippety z pliku post-snippets-export.zip. Import nadpisze "
+"instniejące Snippety."
+
+#: ../lib/PostSnippets/ImportExport.php:74
+msgid "Import Snippets"
+msgstr "Importuj"
+
+#: ../lib/PostSnippets/ImportExport.php:113
+msgid "Snippets successfully imported."
+msgstr "Snippety zostały zaimportowane."
+
+#: ../lib/PostSnippets/ImportExport.php:118
+#: ../lib/PostSnippets/ImportExport.php:127
+#: ../lib/PostSnippets/ImportExport.php:133
+msgid "Snippets could not be imported:"
+msgstr "Snippety nie mogły zostać zaimportowane."
+
+#: ../lib/PostSnippets/ImportExport.php:120
+msgid "Unzipping failed."
+msgstr "Rozpakowanie zakończone niepowodzeniem."
+
+#: ../lib/PostSnippets/ImportExport.php:135
+msgid "Upload failed."
+msgstr "Upload nieudany."
+
+#: ../views/admin_snippets.php:8 ../views/admin_snippets.php:17
+#: ../views/help_basic.php:1
+msgid "Title"
+msgstr "Nazwa"
+
+#: ../views/admin_snippets.php:46
+msgid "PHP Code"
+msgstr "Kod PHP"
+
+#: ../views/admin_snippets.php:58 ../views/help_basic.php:29
+msgid "Description"
+msgstr "Opis"
+
+#: ../views/admin_snippets.php:70
+msgid "Update Snippets"
+msgstr "Zaktualizuj"
+
+#: ../views/admin_snippets.php:71
+msgid "Add New Snippet"
+msgstr "Dodaj nowy"
+
+#: ../views/admin_snippets.php:72
+msgid "Delete Selected"
+msgstr "Usuń zaznaczone"
+
+#: ../views/help_advanced.php:2
+msgid ""
+"You can retrieve a Post Snippet directly from PHP, in a theme for instance, "
+"by using the PostSnippets::getSnippet() method."
+msgstr ""
+"Możesz pobrać Snippeta za pomocą  PHP (np. w pliku motywu). Użyj funkcji "
+"get_post_snippet()."
+
+#: ../views/help_advanced.php:5
+msgid "Usage"
+msgstr "Użycie"
+
+#: ../views/help_advanced.php:11
+msgid "Parameters"
+msgstr "Parametry"
+
+#: ../views/help_advanced.php:14
+msgid "(string) (required) The name of the snippet to retrieve."
+msgstr "(strong)(wymagany) Nazwa snippeta, który chcesz pobrać."
+
+#: ../views/help_advanced.php:17
+msgid ""
+"(string) The variables to pass to the snippet, formatted as a query string."
+msgstr "(string) Zmienne snippeta przekazane jako 'query string'"
+
+#: ../views/help_advanced.php:20 ../views/help_basic.php:12
+#: ../views/help_basic.php:21
+msgid "Example"
+msgstr "Przykład"
+
+#: ../views/help_basic.php:3
+msgid ""
+"Give the snippet a title that helps you identify it in the post editor. This "
+"also becomes the name of the shortcode if you enable that option"
+msgstr ""
+"Nazwa snippeta pomoże odnaleźć go w edytorze treści. Jest to także nazwa "
+"funkcji shortcode (jeżeli wybierzesz taką opcję)"
+
+#: ../views/help_basic.php:8
+msgid ""
+"A comma separated list of custom variables you can reference in your "
+"snippet. A variable can also be assigned a default value that will be used "
+"in the insert window by using the equal sign, variable=default."
+msgstr ""
+"Rozdzielona przecinkami lista zmiennych snippeta. Domyślną wartość zmiennej "
+"możesz nadać używająć znaku równości, zmienna=wartość_domyślna"
+
+#: ../views/help_basic.php:18
+msgid ""
+"This is the block of text, HTML or PHP to insert in the post or as a "
+"shortcode. If you have entered predefined variables you can reference them "
+"from the snippet by enclosing them in {} brackets."
+msgstr ""
+"Blok teksu, kodu HTML lub PHP, który będzie wstawiony jako shortcode. "
+"Zdefiniowane zmienne możesz  wstawić używając nawiasów klamrowych {}."
+
+#: ../views/help_basic.php:22
+msgid ""
+"To reference the variables in the example above, you would enter {url} and "
+"{name}. So if you enter this snippet:"
+msgstr ""
+"Aby użyć zmiennych z powyższego przykładu, wykorzystaj  {url} i {name}.  "
+"Jeżeli wstawisz:"
+
+#: ../views/help_basic.php:26
+msgid ""
+"You will get the option to replace url and name on insert if they are "
+"defined as variables."
+msgstr ""
+"będziesz mógł podać  URL {url} i nazwę {name} w momencie wstawiania do "
+"treści (jeżeli te pola zostały zdefiniowane jako zmienne)."
+
+#: ../views/help_basic.php:31
+msgid ""
+"An optional description for the Snippet. If filled out, the description will "
+"be displayed in the snippets insert window in the post editor."
+msgstr ""
+"Opcjonalny opis Snippeta. Zostanie wyświetlony w oknie wstawiania snippeta w "
+"edytorze treści."
+
+#: ../views/help_php.php:2
+msgid ""
+"Snippets defined as shortcodes can optionally also be evaluated as PHP Code "
+"by enabling the PHP checkbox. PHP snippets is only available when treating "
+"the snippet as a shortcode."
+msgstr ""
+"Zaznaczenie opcji 'Kod PHP' spowoduje przetworzenie snippeta jako kodu PHP.  "
+"Snippety będą interpretowane jako kod PHP wyłącznie po włączeniu opcji "
+"Shortcode."
+
+#: ../views/help_php.php:5
+msgid "Example PHP Snippet"
+msgstr "Przykładowy Snippet PHP"
+
+#: ../views/help_php.php:13
+msgid ""
+"With a snippet defined like the one above, you can call it with its "
+"shortcode definition in a post. Let's pretend that the example snippet is "
+"named phpcode and have one variable defined loop_me, then it would be called "
+"like this from a post:"
+msgstr ""
+"Snippeta zdefionawanego jak ten powyżej możej użyć jako kodu shortcode. "
+"Zakładając, że przykładowy snippet został nazwany phpcode i posiada zmienną "
+"loop_me, możesz go użyć w treści posta w następujący sposób:"
+
+#: ../views/help_php.php:19
+msgid ""
+"When the shortcode is executed the loop_me variable will be replaced with "
+"the string supplied in the shortcode and then the PHP code will be "
+"evaluated. (Outputting the string five times in this case. Wow!)"
+msgstr ""
+"W chwili wykonania kodu shortcode, zmienna loop_me zostanie zastąpiona przez "
+"wprowadzoną wartość i kod PHP zostanie przetworzony (wyświetli 5 razy "
+"wprowadzoną wartość. Wa wa wee wa!)."
+
+#: ../views/help_php.php:23
+msgid ""
+"Note the evaluation order, any snippet variables will be replaced before the "
+"snippet is evaluated as PHP code. Also note that a PHP snippet don't need to "
+"be wrapped in &lt;?php #code; ?&gt;."
+msgstr ""
+"Zwróć uwagę na kolejność interpretacji zmiennych. Zmienne snippeta zostaną "
+"zastąpione podanymi wartościami przed wykonaniem kodu jako PHP. Pamiętaj "
+"także, że kod nie musi być zawarty w znacznikach   &lt;?php #code; ?&gt;."
+
+#: ../views/help_shortcode.php:2
+msgid ""
+"When enabling the shortcode checkbox, the snippet is no longer inserted "
+"directly but instead inserted as a shortcode. The obvious advantage of this "
+"is of course that you can insert a block of text or code in many places on "
+"the site, and update the content from one single place."
+msgstr ""
+"Zaznaczenie opcji Shortcode spowoduje, że snippet nie zostanie wstawiony "
+"bezpośrednio lecz użyty jak shortcode. Podstawową zaletą tej opcji jest "
+"fakt, że możesz wielokrotnie wstawić kod do wielu postów i kontrolować ich "
+"działanie w jednym miejscu."
+
+#: ../views/help_shortcode.php:6
+msgid ""
+"The name to use the shortcode is the same as the title of the snippet "
+"(spaces are not allowed). When inserting a shortcode snippet, the shortcode "
+"and not the content will be inserted in the post."
+msgstr ""
+"Nazwa kodu shortcode będzie taka sama jak nazwa snippeta (nie używaj "
+"spacji). Wstawienie snippeta z opcją shortcode spowoduje wstawienie "
+"znacznika shortcode, nie kodu snippeta."
+
+#: ../views/help_shortcode.php:10
+msgid ""
+"If you enclose the shortcode in your posts, you can access the enclosed "
+"content by using the variable {content} in your snippet. The {content} "
+"variable is reserved, so don't use it in the variables field."
+msgstr ""
+"Jeżeli otoczysz dowolną  treść kodem shortcode, możesz użyć zawartości za "
+"pomocą zmiennej {content}. Zmienna {content} jest zastrzeżona, nie używaj "
+"jej w snippetach."
+
+#: ../views/help_shortcode.php:15
+msgid "See the dedicated help section for information about PHP shortcodes."
+msgstr "Zajrzyj do działu pomocy o PHP."
+
+#: ../views/help_shortcode.php:18
+#, php-format
+msgid ""
+"Before the shortcode is outputted, it can optionally be formatted with %s, "
+"to transform quotes to smart quotes, apostrophes, dashes, ellipses, the "
+"trademark symbol, and the multiplication symbol."
+msgstr ""
+"Kod zwracany przez shortcode zostanie dodatkowo przefiltrowany przez funkcję "
+"%s. "
+
+#: ../views/help_sidebar.php:2
+msgid "For more information:"
+msgstr "Więcej informacji:"
+
+#: ../views/help_sidebar.php:6
+msgid "Documentation"
+msgstr "Dokumentacja"
+
+#: ../views/help_sidebar.php:10
+msgid "Support Forums"
+msgstr "Forum"
+
+#: ../views/help_sidebar.php:14
+msgid "GitHub Contribution"
+msgstr ""
+
+#: ../views/jquery-ui-dialog.php:47
+msgid "This snippet is insert only, no variables defined."
+msgstr "Ten snippet nie posiada parametrów. Możesz go tylko wstawić."
