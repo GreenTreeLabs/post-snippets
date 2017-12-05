@@ -44,12 +44,12 @@ class Shortcode
                             $attributes["content"] = $content;
                         }
 
-                        $snippet = addslashes( $snippet["snippet"] );
+                        $snippettext = addslashes( $snippet["snippet"] );
                         // Disables auto conversion from & to &amp; as that should be done in snippet, not code (destroys php etc).
                         // $snippet = str_replace("&", "&amp;", $snippet);
 
                         foreach ( $attributes as $key => $val ) {
-                            $snippet = str_replace( '{' . $key . '}', $val, $snippet );
+                            $snippettext = str_replace( '{' . $key . '}', $val, $snippettext );
                         }
 
                         // There might be the case that a snippet contains
@@ -58,24 +58,24 @@ class Shortcode
                         // the shortcode is used without enclosing it. To
                         // avoid outputting {content} as part of the string
                         // lets remove possible occurences.
-                        $snippet = str_replace( '{content}', '', $snippet );
+                        $snippettext = str_replace( '{content}', '', $snippettext );
 
                         // Handle PHP shortcodes
                         $php = $snippet["php"];
                         if ( $php == true ) {
-                            $snippet = \PostSnippets\Shortcode::phpEval( $snippet );
+                            $snippettext = \PostSnippets\Shortcode::phpEval( $snippettext );
                         }
 
                         // Strip escaping and execute nested shortcodes
-                        $snippet = do_shortcode( stripslashes( $snippet ) );
+                        $snippettext = do_shortcode( stripslashes( $snippettext ) );
 
                         // WPTexturize the Snippet
                         $texturize = $texturize;
                         if ( $texturize == true ) {
-                            $snippet = wptexturize( $snippet );
+                            $snippettext = wptexturize( $snippettext );
                         }
 
-                        return $snippet;
+                        return $snippettext;
                     } );
                 }
             }
