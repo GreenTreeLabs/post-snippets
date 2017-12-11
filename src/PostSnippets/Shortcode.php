@@ -33,54 +33,50 @@ class Shortcode
                     // Get the wptexturize setting
                     $texturize = isset($snippet["wptexturize"]) ? $snippet["wptexturize"] : false;
 
-                    add_shortcode(
-                        $snippet['title'],
-                        create_function(
-                            '$atts,$content=null',
-                            '$shortcode_symbols = array('.$vars_str.');
-                            extract(shortcode_atts($shortcode_symbols, $atts));
+                    add_shortcode( $snippet['title'], function ( $atts, $content = null ) use ( $vars_str, $snippet, $texturize ) {
+                        $shortcode_symbols = [ $vars_str ];
+                        extract( shortcode_atts( $shortcode_symbols, $atts ) );
 
-                            $attributes = compact( array_keys($shortcode_symbols) );
+                        $attributes = compact( array_keys( $shortcode_symbols ) );
 
-                            // Add enclosed content if available to the attributes array
-                            if ($content != null) {
-                                $attributes["content"] = $content;
-                            }
+                        // Add enclosed content if available to the attributes array
+                        if ( $content != null ) {
+                            $attributes["content"] = $content;
+                        }
 
-                            $snippet = \''. addslashes($snippet["snippet"]) .'\';
-                            // Disables auto conversion from & to &amp; as that should be done in snippet, not code (destroys php etc).
-                            // $snippet = str_replace("&", "&amp;", $snippet);
+                        $snippettext = addslashes( $snippet["snippet"] );
+                        // Disables auto conversion from & to &amp; as that should be done in snippet, not code (destroys php etc).
+                        // $snippet = str_replace("&", "&amp;", $snippet);
 
-                            foreach ($attributes as $key => $val) {
-                                $snippet = str_replace("{".$key."}", $val, $snippet);
-                            }
+                        foreach ( $attributes as $key => $val ) {
+                            $snippettext = str_replace( '{' . $key . '}', $val, $snippettext );
+                        }
 
-                            // There might be the case that a snippet contains
-                            // the post snippets reserved variable {content} to
-                            // capture the content in enclosed shortcodes, but
-                            // the shortcode is used without enclosing it. To
-                            // avoid outputting {content} as part of the string
-                            // lets remove possible occurences.
-                            $snippet = str_replace("{content}", "", $snippet);
+                        // There might be the case that a snippet contains
+                        // the post snippets reserved variable {content} to
+                        // capture the content in enclosed shortcodes, but
+                        // the shortcode is used without enclosing it. To
+                        // avoid outputting {content} as part of the string
+                        // lets remove possible occurences.
+                        $snippettext = str_replace( '{content}', '', $snippettext );
 
-                            // Handle PHP shortcodes
-                            $php = "'. $snippet["php"] .'";
-                            if ($php == true) {
-                                $snippet = \PostSnippets\Shortcode::phpEval( $snippet );
-                            }
+                        // Handle PHP shortcodes
+                        $php = $snippet["php"];
+                        if ( $php == true ) {
+                            $snippettext = \PostSnippets\Shortcode::phpEval( $snippettext );
+                        }
 
-                            // Strip escaping and execute nested shortcodes
-                            $snippet = do_shortcode(stripslashes($snippet));
+                        // Strip escaping and execute nested shortcodes
+                        $snippettext = do_shortcode( stripslashes( $snippettext ) );
 
-                            // WPTexturize the Snippet
-                            $texturize = "'. $texturize .'";
-                            if ($texturize == true) {
-                                $snippet = wptexturize( $snippet );
-                            }
+                        // WPTexturize the Snippet
+                        $texturize = $texturize;
+                        if ( $texturize == true ) {
+                            $snippettext = wptexturize( $snippettext );
+                        }
 
-                            return $snippet;'
-                        )
-                    );
+                        return $snippettext;
+                    } );
                 }
             }
         }
