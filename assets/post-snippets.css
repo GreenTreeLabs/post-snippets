@@ -83,3 +83,113 @@
     width: 98%;
     text-align: right;
 }
+.post-snippets-table .check-column{
+	padding: 8px 10px !important;
+}
+.post-snippets{
+	margin-bottom: 20px;
+	margin-top: 10px;
+}
+.post-snippets-item {
+	background: #efefef;
+	margin-bottom: 10px;
+	border: 1px solid #d8d6d6;
+}
+.post-snippets-item .dashicons-arrow-up{
+	display: none;
+}
+.post-snippets-item .text-left input[type="checkbox"]{
+	margin-left: 8px;
+	/*margin-right: 50px;*/
+}
+.post-snippets-item.open .dashicons-arrow-up{
+	display: inline-block;
+}
+.post-snippets-item.open .dashicons-arrow-down{
+	display: none;
+}
+.post-snippets-item.open .post-snippets-data{
+	display: block;
+}
+.post-snippets-item input.post-snippet-title{
+	display: none;
+}
+.post-snippets-item .save-title{
+	display: none;
+}
+.post-snippets-item.edit input.post-snippet-title{
+	display: inline-block;
+}
+.post-snippets-item.edit .save-title{
+	display: inline-block;
+}
+.post-snippets-item.edit span.post-snippet-title{
+	display: none;
+}
+.post-snippets-item.edit .edit-title{
+	display: none;
+}
+.post-snippets-data{
+	width: 100%;
+	background: #fff;
+	/*padding: 10px 10px;*/
+}
+.post-snippets-data-cell{
+	display: inline-block;
+	vertical-align: top;
+	padding: 10px;
+	text-align: left;
+}
+.post-snippets-toolbar{
+	padding: 8px 10px;
+	overflow: hidden;
+}
+.post-snippets-toolbar .edit-title,
+.post-snippets-toolbar .save-title{
+	text-decoration: none;
+	color: inherit;
+}
+.post-snippets-data{
+	display: none;
+}
+.post-snippets-toolbar div{
+	display: inline-block;
+	text-align: left;
+	font-weight: bold;
+	float: left;
+	width: 70%;
+}
+
+.post-snippets-toolbar div:last-child{
+	text-align: right;
+	width: 24%;
+	float: right;
+}
+.post-snippets-toolbar div:last-child a{
+	color: inherit;
+	text-decoration: none;
+}
+.post-snippets-data .post-snippets-data-cell{
+	width: 180px;
+}
+.post-snippets-data .post-snippets-data-cell:first-child{
+	width: calc(100% - 250px);
+}
+.post-snippets-data .post-snippets-data-cell:last-child{
+	width: 180px;
+}
+.handle{
+	cursor: move;
+}
+.mt-20{
+	margin-top: 20px !important;
+}
+.mb-20{
+	margin-bottom: 20px !important;
+}
+.post-snippets-wrap input[type="checkbox"]{
+	margin: 0  20px 0 0 !important;
+}
+@media screen and ( max-width: 782px ) {
+
+}
