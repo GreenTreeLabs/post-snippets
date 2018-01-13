@@ -15,7 +15,7 @@ class Features {
 	public function showFeatures() {
 
 		// Get amount of snippets
-		$snippet_count = count( get_option( 'post_snippets_options' ) );
+		$snippet_count = count( get_option( 'post_snippets_options', array() ) );
 
 		// Get price for this site
 		$prices = array ( '39', '49', '59', '69', '79', '89', '99' );

@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Get amount of snippets
-$snippet_count = count( get_option( 'post_snippets_options' ) );
+$snippet_count = count( get_option( 'post_snippets_options', array() ) );
 
 ?>
 
