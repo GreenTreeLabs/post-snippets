@@ -41,10 +41,11 @@ function postsnippets_fs() {
 			'has_addons'          => false,
 			'has_paid_plans'      => false,
 			'menu'                => array (
-				'slug'           => 'post-snippets',
+				'slug'           => 'post-snippets/post-snippets.php',
 				'override_exact' => true,
 				'contact'        => false,
-				'support'        => true,
+				'account'        => false,
+				'support'        => false,
 				'parent'         => array (
 					'slug' => 'options-general.php',
 				),
@@ -61,7 +62,7 @@ postsnippets_fs();
 do_action( 'postsnippets_fs_loaded' );
 
 function postsnippets_fs_settings_url() {
-	return admin_url( 'options-general.php?page=post-snippets%2Fpost-snippets.php&tab=options' );
+	return admin_url( 'options-general.php?page=post-snippets%2Fpost-snippets.php' );
 }
 
 postsnippets_fs()->add_filter( 'connect_url', 'postsnippets_fs_settings_url' );
