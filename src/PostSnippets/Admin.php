@@ -60,7 +60,7 @@ class Admin {
 
         if ( current_user_can( 'manage_options' ) or isset( $allowed ) ) {
             $optionPage = add_options_page(
-                'Post Snippets Options',
+                'Post Snippets',
                 'Post Snippets',
                 $capability,
                 \PostSnippets::FILE,
