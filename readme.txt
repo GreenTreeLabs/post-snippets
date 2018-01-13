@@ -97,9 +97,27 @@ your clients to be able to use PHP code in a post snippet.
 
 == Changelog ==
 
-= Version 3.0.0 - 30 Dec 2017 =
-* Reviewed close to 30 issues and either closed, fixed or registered them to be fixed in the future, see https://github.com/davdebcom/post-snippets/issues/68.
+= Version 3.0.0 - 13 Jan 2018 =
 
+* NOTES:
+    * Reviewed close to 30 issues and either closed, fixed or registered them to be fixed in the future, see https://github.com/davdebcom/post-snippets/issues/68
+
+* NEW:
+    * A nice new User Interface, a good starting point for more improvements in the future. Switched from old tables to div's and css
+    * The new UI supports updating the snippet name/shortcode without a page refresh
+    * Expanding and collapsing individual snippets, or all snippets with a click, is now possible
+    * The state of snippets (expand/collapse) is personal, so snippet managers can open and close snippets as they see fit
+    * Added a date to the export filename as requested by multiple users, example: post-snippets-export-2014-06-14.zip
+
+* FIX:
+    * Compatibility for PHP 7.2
+    * Fix some URL's in the plugin so they also work when post-snippets folder is not exactly "post-snippets"
+    * Remove uninstall actions, I believe it's not user friendly to remove data when user uninstalls, what if they are updating (manually)?
+
+* DEV:
+    * Added version tags to assets, so updated of javascript and css happen without issues in the following updates
+    * Added conditional code for checking if dialog and tabs functions exists, by KZeni
+    * Added Freemius SDK, which will help with improving Post Snippets in the future. It's completely opt-in, you can keep it disabled.
 
 = Version 2.5.4 - 30 Nov 2017 =
  * UI improvement: Add update, add new and delete buttons to top of Snippets list, not just bottom
