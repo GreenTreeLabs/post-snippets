@@ -18,7 +18,7 @@ class Features {
 		$snippet_count = count( get_option( 'post_snippets_options', array() ) );
 
 		// Get price for this site
-		$prices = array ( '39', '49', '59', '69', '79', '89', '99' );
+		$prices = array ( '39', '49', '59', '69', '79' );
 
 		if ( get_option( 'ps_pro_features_price' ) == false ) {
 
