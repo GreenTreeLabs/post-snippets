@@ -4,7 +4,7 @@ Tags: custom snippet, custom shortcode, snippet, snippets, shortcode, shortcodes
 Requires at least: 3.3
 Tested up to: 4.9
 Requires PHP: 5.3
-Stable tag: 2.5.4
+Stable tag: 3.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
