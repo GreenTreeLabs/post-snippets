@@ -364,19 +364,12 @@ class Admin {
         if ( postsnippets_fs()->is_not_paying() ) {
             $tabs['features'] = __( 'Pro features', 'post-snippets' );
         }
-        $tabs['account'] =  __( 'Account', 'post-snippets' );
 
         echo '<h2 class="nav-tab-wrapper">';
         foreach ( $tabs as $tab => $title ) {
             $active = ( $active_tab == $tab ) ? ' nav-tab-active' : '';
-            if( $tab == 'account') {
-                $account_url = admin_url('/options-general.php?page=post-snippets-account');
-                echo "<a href='{$account_url}' class='nav-tab {$active} tab-{$tab}'>{$title}</a>";
-            }else{
-                echo "<a href='{$base_url}{$tab}' class='nav-tab {$active} tab-{$tab}'>{$title}</a>";
-            }
+            echo "<a href='{$base_url}{$tab}' class='nav-tab {$active} tab-{$tab}'>{$title}</a>";
         }
-
         echo '</h2>';
 
         // Tab content

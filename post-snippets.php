@@ -136,6 +136,7 @@ class PostSnippets
             false,
             dirname(plugin_basename(__FILE__)).'/lang/'
         );
+
         add_action('after_setup_theme', array(&$this, 'phpExecState'));
 
         new \PostSnippets\Admin;
@@ -301,6 +302,5 @@ class PostSnippets
         }
     }
 }
-if ( ! function_exists( 'postsnippets_fs' ) ) {
-    add_action( 'plugins_loaded', array( 'PostSnippets', 'getInstance' ) );
-}
+
+add_action('plugins_loaded', array('PostSnippets', 'getInstance'));
