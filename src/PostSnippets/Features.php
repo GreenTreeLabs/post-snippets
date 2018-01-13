@@ -18,9 +18,11 @@ class Features {
 		$snippet_count = count( get_option( 'post_snippets_options', array() ) );
 
 		// Get price for this site
-		$prices = array ( '39', '49', '59', '69', '79' );
+		$prices = array ( '39', '49', '59', '69' );
 
-		if ( get_option( 'ps_pro_features_price' ) == false ) {
+		$stored_price = get_option( 'ps_pro_features_price' );
+
+		if ( ($stored_price == false) || ($stored_price == '9' || '19' || '29' || '79' )  ) {
 
 			// The option already exists, so we just update it.
 			update_option( 'ps_pro_features_price', $prices[ array_rand( $prices ) ] );
