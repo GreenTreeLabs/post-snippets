@@ -28,9 +28,9 @@ function postsnippets_fs() {
 
 	if ( ! isset( $postsnippets_fs ) ) {
 		// Include Freemius SDK.
-		require_once dirname(__FILE__) . '/freemius/start.php';
+		require_once dirname( __FILE__ ) . '/freemius/start.php';
 
-		$postsnippets_fs = fs_dynamic_init( array(
+		$postsnippets_fs = fs_dynamic_init( array (
 			'id'                  => '1576',
 			'slug'                => 'post-snippets',
 			'type'                => 'plugin',
@@ -40,11 +40,12 @@ function postsnippets_fs() {
 			'has_premium_version' => false,
 			'has_addons'          => false,
 			'has_paid_plans'      => false,
-			'menu'                => array(
+			'menu'                => array (
 				'slug'           => 'post-snippets',
 				'override_exact' => true,
-				'support'        => false,
-				'parent'         => array(
+				'contact'        => false,
+				'support'        => true,
+				'parent'         => array (
 					'slug' => 'options-general.php',
 				),
 			),
