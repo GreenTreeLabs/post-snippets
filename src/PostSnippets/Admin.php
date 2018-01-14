@@ -714,7 +714,7 @@ class Admin {
             wp_send_json_error('permission denied');
         }
         $orders   = array_map( 'intval', $_POST['order'] );
-        $snippets = get_option( 'post_snippets_options', [] );
+        $snippets = get_option( 'post_snippets_options', array() );
         if ( empty( $snippets ) ) {
             wp_send_json_error('snippets empty');
         }
@@ -740,7 +740,7 @@ class Admin {
         }
         $key      = intval( $_POST['key'] );
         $title    = sanitize_title( $_POST['title'] );
-        $snippets = get_option( 'post_snippets_options', [] );
+        $snippets = get_option( 'post_snippets_options', array() );
         if ( empty( $snippets ) ) {
             wp_send_json_error();
         }
