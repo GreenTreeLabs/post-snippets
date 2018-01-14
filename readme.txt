@@ -4,7 +4,7 @@ Tags: custom snippet, custom shortcode, snippet, snippets, shortcode, shortcodes
 Requires at least: 3.3
 Tested up to: 4.9
 Requires PHP: 5.3
-Stable tag: 3.0.0
+Stable tag: 3.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,10 @@ your clients to be able to use PHP code in a post snippet.
 5. Easy to access inline documentation (top right 'Help' button in WordPress).
 
 == Changelog ==
+
+= Version 3.0.2 - 13 Jan 2018 =
+
+* Fixed a PHP error by changing a new style array syntax to the version that also works in PHP 5.3 (this: array())
 
 = Version 3.0.0 - 13 Jan 2018 =
 
