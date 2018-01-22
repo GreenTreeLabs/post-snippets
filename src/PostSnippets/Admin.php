@@ -254,6 +254,7 @@ class Admin {
                 'wptexturize' => '0',
             );
             $formatted_snippets = array();
+
             if ( ! empty( $_POST['snippets'] ) ) {
                 $snippets = map_deep( $_POST['snippets'], 'trim' );
                 $i = 0;
@@ -262,6 +263,7 @@ class Admin {
                     if ( empty( $snippets ) ) {
                         continue;
                     }
+
                     $snippet = wp_parse_args( $snippet, $default );
 
                     $snippet['title'] = str_replace( ' ', '', $snippet['title'] );
@@ -744,11 +746,20 @@ class Admin {
         if ( empty( $snippets ) ) {
             wp_send_json_error();
         }
+
+        foreach ( $snippets as $key =>$snippet){
+            if( $snippet['title'] == $title){
+                wp_send_json_error(__('Duplicate title is not allowed. Please use different title for each snippets.', 'post-snippets'));
+            }
+        }
+
+
         if ( isset( $snippets[ $key ] ) ) {
             $snippets[ $key ]['title'] = $title;
             update_option( 'post_snippets_options', $snippets );
         }
-        wp_send_json_success();
+
+        wp_send_json_success($title);
     }
 
 }

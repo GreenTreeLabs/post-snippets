@@ -57,15 +57,15 @@ jQuery(document).ready(function ($) {
      * Bulk check/uncheck
      */
     $('.check-column input').on('change', function () {
-       if( $(this).is(":checked") ){
-            $('.post-snippets-item input[name^="checked"]').each(function(){
+        if ($(this).is(":checked")) {
+            $('.post-snippets-item input[name^="checked"]').each(function () {
                 $(this).attr('checked', true);
             });
-       }else{
-           $('.post-snippets-item input[name^="checked"]').each(function(){
-               $(this).attr('checked', false);
-           });
-       }
+        } else {
+            $('.post-snippets-item input[name^="checked"]').each(function () {
+                $(this).attr('checked', false);
+            });
+        }
     });
     /**
      * Update title real time
@@ -82,9 +82,9 @@ jQuery(document).ready(function ($) {
         var item = $(this).closest('.post-snippets-item');
         var openItems = getFromLocalStorage();
         var key = parseInt(item.data('order'));
-        if( _.contains(openItems, key) ){
+        if (_.contains(openItems, key)) {
             setInLocalStorage(_.without(openItems, key));
-        }else{
+        } else {
             setInLocalStorage(_.union(openItems, [key]));
         }
         $(this).closest('.post-snippets-item').toggleClass('open');
@@ -114,7 +114,13 @@ jQuery(document).ready(function ($) {
             'title': title
         };
         $.post(ajaxurl, data, function (res) {
-            wrap.toggleClass('edit');
+            if(res.success){
+                wrap.find('input.post-snippet-title').val(res.data);
+                wrap.find('span.post-snippet-title').text(res.data);
+                wrap.toggleClass('edit');
+            }else{
+             alert(res.data);
+            }
         });
         return false;
     });
@@ -144,8 +150,8 @@ jQuery(document).ready(function ($) {
      */
     function getFromLocalStorage(name) {
         var optionName = name || 'openSnippets';
-        var savedValue  = localStorage.getItem(optionName);
-        if(savedValue !== null){
+        var savedValue = localStorage.getItem(optionName);
+        if (savedValue !== null) {
             return JSON.parse(savedValue);
         }
         return [];
@@ -157,7 +163,7 @@ jQuery(document).ready(function ($) {
     $('.post-snippets .post-snippets-item').each(function () {
         var key = $(this).data('order');
         var openSnippets = getFromLocalStorage();
-        if( _.contains(openSnippets, key) ){
+        if (_.contains(openSnippets, key)) {
             $(this).addClass('open');
         }
     });
@@ -166,14 +172,33 @@ jQuery(document).ready(function ($) {
      * Handle Expand Collapse
      */
     $('.expand-collapse a').on('click', function () {
-        var isExpand = ! $('.expand-collapse').hasClass('expanded');
-        if( isExpand ){
+        var isExpand = !$('.expand-collapse').hasClass('expanded');
+        if (isExpand) {
             $('.post-snippets-item').not('.open').find('.toggle-post-snippets-data').trigger('click');
-        }else{
+        } else {
             $('.post-snippets-item.open').find('.toggle-post-snippets-data').trigger('click');
         }
         $('.expand-collapse').toggleClass('expanded');
         return false;
+    });
+
+
+    $('form.post-snippets-wrap').on('submit', function (e) {
+        var list_of_values = [];
+
+        $('input.post-snippet-title').each(function (key, element) {
+            var val = $(element).val().trim();
+            if( $.inArray(val, list_of_values)){
+                list_of_values.push(val);
+            }else{
+                alert('Duplicate title is not allowed. Please use different title for each snippets.');
+                $(element).closest('.post-snippets-item').css('border', '1px solid red');
+                e.preventDefault();
+               return false;
+            }
+        });
+
+        return true ;
     });
 
 });
