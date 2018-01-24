@@ -40,7 +40,7 @@ class Shortcode
                             if ( $content != null ) {
                                 $attributes["content"] = $content;
                             }
-                            $generated_content = addslashes( $snippet["snippet"] );
+                            $generated_content = $snippet["snippet"];
                             // Disables auto conversion from & to &amp; as that should be done in snippet, not code (destroys php etc).
                             // $snippet = str_replace("&", "&amp;", $snippet);
                             foreach ( $attributes as $key => $val ) {
