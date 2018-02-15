@@ -4,7 +4,7 @@ Tags: custom snippet, custom shortcode, snippet, snippets, shortcode, shortcodes
 Requires at least: 3.3
 Tested up to: 4.9
 Requires PHP: 5.3
-Stable tag: 3.0.2
+Stable tag: 3.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,13 @@ your clients to be able to use PHP code in a post snippet.
 5. Easy to access inline documentation (top right 'Help' button in WordPress).
 
 == Changelog ==
+
+= Version 3.0.3 - 15 Feb 2018 =
+
+* FIX:
+    * Check for unique titles/shortcodes when creating new snippets, prevent duplicates
+    * Improper slashes parsing, some users woudl see multiple clashes in shortcodes/PHP code, causing snippets to not render correctly
+    * Prevent some editors (TinyMCE Advanced) from stacking above the Post Snippets dialog, add zindex to .ui-dialog
 
 = Version 3.0.2 - 13 Jan 2018 =
 

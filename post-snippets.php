@@ -13,7 +13,7 @@
  * Plugin Name: Post Snippets
  * Plugin URI: https://www.postsnippets.com
  * Description: Create a library of reusable content and insert it into your posts and pages. Navigate to "Settings > Post Snippets" to get started.
- * Version: 3.0.2
+ * Version: 3.0.3
  * Author: David de Boer
  * Author URI: https://www.postsnippets.com
  * License: GPL-2.0+
