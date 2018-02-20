@@ -17,20 +17,11 @@ class Features {
 		// Get amount of snippets
 		$snippet_count = count( get_option( 'post_snippets_options', array() ) );
 
-		// Get price for this site
-		$prices = array ( '39', '49', '59', '69' );
+		// Delete any existing prices
+		delete_option( 'ps_pro_features_price' );
 
-		$stored_price = get_option( 'ps_pro_features_price' );
-
-		if ( ($stored_price == false) || ($stored_price == '9' || '19' || '29' || '79' )  ) {
-
-			// The option already exists, so we just update it.
-			update_option( 'ps_pro_features_price', $prices[ array_rand( $prices ) ] );
-
-		}
-
-		// Now get the final price
-		$price = get_option( 'ps_pro_features_price' );
+		// Now set the final price
+		$price = '39.99';
 
 		// Setup features
 		$features = array (
@@ -129,7 +120,7 @@ ob_start();
                         </p>
 
                         <p class="ps_features_wrap_intro">
-		                    <?php echo sprintf( __( 'It\'s the professional version of Post Snippets, starting at $%s per year. You get three votes. The Pro version makes development and support for both versions sustainable, so you get a <strong>higher quality</strong> plugin.', 'post-snippets' ), $price ); ?>
+		                    <?php echo sprintf( __( 'It\'s the professional version of Post Snippets, starting at $%s per year (excl. taxes). You get three votes. The Pro version makes development and support for both versions sustainable, so you get a <strong>higher quality</strong> plugin.', 'post-snippets' ), $price ); ?>
                         </p>
 
 						<p class="ps_features_wrap_intro"><?php _e( 'Other suggestions? Send an email to <a href="mailto:david@postsnippets.com">david@postsnippets.com</a>.', 'post-snippets' ); ?>
