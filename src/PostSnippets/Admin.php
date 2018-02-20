@@ -664,7 +664,7 @@ class Admin {
         }
 
         // Show newsletter notice.
-        if ( strpos( get_current_screen()->id, '/post-snippets' ) !== false ) {
+        if ( get_current_screen()->id == 'settings_page_post-snippets/post-snippets' ) {
             $active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'snippets';
             if ( $active_tab != 'features' ) {
                 include_once( PS_PATH . '/views/admin_notice_newsletter.php' );
