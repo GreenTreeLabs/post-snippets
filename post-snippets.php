@@ -37,17 +37,15 @@ function postsnippets_fs() {
 			'slug'                => 'post-snippets',
 			'type'                => 'plugin',
 			'public_key'          => 'pk_58a2ec84c44485a459aae07bfaf5f',
-			'is_premium'          => false,
-			// If your plugin is a serviceware, set this option to false.
-			'has_premium_version' => false,
+			'is_premium'          => true,
 			'has_addons'          => false,
-			'has_paid_plans'      => false,
+			'has_paid_plans'      => true,
 			'menu'                => array (
 				'slug'           => 'post-snippets/post-snippets.php',
 				'override_exact' => true,
-				'contact'        => false,
-				'account'        => false,
-				'support'        => false,
+				'contact'        => true,
+				'account'        => true,
+				'support'        => true,
 				'parent'         => array (
 					'slug' => 'options-general.php',
 				),
