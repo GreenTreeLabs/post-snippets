@@ -40,6 +40,10 @@ function postsnippets_fs() {
 			'is_premium'          => true,
 			'has_addons'          => false,
 			'has_paid_plans'      => true,
+			'trial'               => array(
+				'days'               => 7,
+				'is_require_payment' => false,
+			),
 			'menu'                => array (
 				'slug'           => 'post-snippets/post-snippets.php',
 				'override_exact' => true,
