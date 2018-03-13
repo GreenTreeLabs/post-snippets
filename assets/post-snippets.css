@@ -70,7 +70,7 @@
 
 
 /** Fix for when editors (TinyMCE Advanced) stack above the PS dialog **/
-.ui-dialog { z-index: 1000 !important ;}
+.ui-dialog { z-index: 10000000 !important ;}
 
 #post-snippets-dialog label {
 	width: 60px;
