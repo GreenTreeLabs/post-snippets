@@ -123,6 +123,10 @@ ob_start();
 		                    <?php echo sprintf( __( 'It\'s the professional version of Post Snippets, starting at $%s per year (excl. taxes). You get three votes. The Pro version makes development and support for both versions sustainable, so you get a <strong>higher quality</strong> plugin.', 'post-snippets' ), $price ); ?>
                         </p>
 
+                        <p class="ps_features_wrap_intro">
+		                    <?php _e( 'By voting you are automatically subscribed to the Post Snippets newsletter, and you can unsubscribe at anytime.', 'post-snippets' ); ?>
+                        </p>
+
 						<p class="ps_features_wrap_intro"><?php _e( 'Other suggestions? Send an email to <a href="mailto:david@postsnippets.com">david@postsnippets.com</a>.', 'post-snippets' ); ?>
                         </p>
 
