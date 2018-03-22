@@ -47,9 +47,9 @@ function postsnippets_fs() {
 			'menu'                => array (
 				'slug'           => 'post-snippets/post-snippets.php',
 				'override_exact' => true,
-				'contact'        => true,
+				'contact'        => false,
 				'account'        => true,
-				'support'        => true,
+				'support'        => false,
 				'parent'         => array (
 					'slug' => 'options-general.php',
 				),
@@ -74,7 +74,25 @@ postsnippets_fs()->add_filter( 'after_skip_url', 'postsnippets_fs_settings_url' 
 postsnippets_fs()->add_filter( 'after_connect_url', 'postsnippets_fs_settings_url' );
 postsnippets_fs()->add_filter( 'after_pending_connect_url', 'postsnippets_fs_settings_url' );
 
-/** Load all of the necessary class files for the plugin */
+/**
+ * Only show Post Snippets submenu when PS is open, not on all Settings pages
+ */
+function postsnippets_show_submenu( $is_visible ) {
+
+	if ( isset( $_REQUEST['page'] ) ) {
+		if ( $is_visible && false !== strpos( $_REQUEST['page'], 'post-snippets' ) ) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+postsnippets_fs()->add_filter( 'is_submenu_visible', 'postsnippets_show_submenu', 10, 2 );
+
+	/**
+	 * Load all of the necessary class files for the plugin
+	 */
 spl_autoload_register('PostSnippets::autoload');
 
 if ( ! defined( 'PS_MAIN_FILE' ) ) {
