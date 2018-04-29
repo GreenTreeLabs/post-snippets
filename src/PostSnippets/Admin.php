@@ -49,39 +49,39 @@ class Admin {
      *
      * @return void
      */
-    public function menu() {
-        $capability = 'manage_options';
-        if ( defined( 'POST_SNIPPETS_ALLOW_EDIT_POSTS' )
-             and current_user_can( 'edit_posts' )
-        ) {
-            $allowed    = true;
-            $capability = 'edit_posts';
-        }
+	public function menu() {
+		$capability = 'manage_options';
+		if ( defined( 'POST_SNIPPETS_ALLOW_EDIT_POSTS' )
+		     and current_user_can( 'edit_posts' )
+		) {
+			$allowed    = true;
+			$capability = 'edit_posts';
+		}
 
-        if ( current_user_can( 'manage_options' ) or isset( $allowed ) ) {
-            $optionPage = add_options_page(
-                'Post Snippets',
-                'Post Snippets',
-                $capability,
-                \PostSnippets::FILE,
-                array( &$this, 'optionsPage' )
-            );
-            new Help( $optionPage );
-        } else {
-            $optionPage = add_options_page(
-                'Post Snippets',
-                'Post Snippets',
-                'edit_posts',
-                \PostSnippets::FILE,
-                array( &$this, 'overviewPage' )
-            );
-        }
+		if ( current_user_can( 'manage_options' ) or isset( $allowed ) ) {
+			$optionPage = add_options_page(
+				__( 'Post Snippets', 'post-snippets'),
+				__( 'Post Snippets', 'post-snippets'),
+				$capability,
+				\PostSnippets::FILE,
+				array ( &$this, 'optionsPage' )
+			);
+			new Help( $optionPage );
+		} else {
+			$optionPage = add_options_page(
+				__( 'Post Snippets', 'post-snippets'),
+				__( 'Post Snippets', 'post-snippets'),
+				'edit_posts',
+				\PostSnippets::FILE,
+				array ( &$this, 'overviewPage' )
+			);
+		}
 
-        add_action(
-            'admin_print_scripts-' . $optionPage,
-            array( &$this, 'scripts' )
-        );
-    }
+		add_action(
+			'admin_print_scripts-' . $optionPage,
+			array ( &$this, 'scripts' )
+		);
+	}
 
     /**
      * Initialize assets for the administration page.
@@ -346,13 +346,14 @@ class Admin {
         $this->delete();
         $this->update();
 
-        // Header
-        echo '
+	    // Header
+	    echo '
         <!-- Create a header in the default WordPress \'wrap\' container -->
         <div class="wrap">
             <div id="icon-plugins" class="icon32"></div>
-            <h2>Post Snippets</h2>
-        ';
+            <h2>';
+	    echo __( 'Post Snippets', 'post-snippets' );
+	    echo '</h2>';
 
         // Tabs
         $active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'snippets';
