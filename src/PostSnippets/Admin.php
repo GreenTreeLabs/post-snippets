@@ -24,7 +24,7 @@ class Admin {
         add_action( 'admin_menu', array( &$this, 'menu' ) );
         add_action( 'admin_init', array( &$this, 'init' ) );
         add_action( 'current_screen', array( &$this, 'addHeaderXss' ) );
-        add_filter( 'plugin_action_links_' . plugin_basename( PS_PATH . 'post-snippets.php' ), array(
+        add_filter( 'plugin_action_links_' . plugin_basename(PS_MAIN_FILE_PATH), array(
             $this,
             'actionLinks'
         ) );
@@ -63,7 +63,7 @@ class Admin {
 				__( 'Post Snippets', 'post-snippets'),
 				__( 'Post Snippets', 'post-snippets'),
 				$capability,
-				\PostSnippets::FILE,
+				'post-snippets',
 				array ( &$this, 'optionsPage' )
 			);
 			new Help( $optionPage );
@@ -72,7 +72,7 @@ class Admin {
 				__( 'Post Snippets', 'post-snippets'),
 				__( 'Post Snippets', 'post-snippets'),
 				'edit_posts',
-				\PostSnippets::FILE,
+				'post-snippets',
 				array ( &$this, 'overviewPage' )
 			);
 		}
@@ -357,7 +357,7 @@ class Admin {
 
         // Tabs
         $active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'snippets';
-        $base_url   = '?page=' . PS_DIRECTORY . '/post-snippets.php&amp;tab=';
+        $base_url   = '?page=' . PS_DIRECTORY . '&amp;tab=';
         $tabs       = array(
             'snippets' => __( 'Manage Snippets', 'post-snippets' ),
             'options'  => __( 'Options', 'post-snippets' ),
