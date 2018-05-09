@@ -1,11 +1,13 @@
 <form method="post" action="" class="post-snippets-wrap">
     <?php wp_nonce_field( 'update_snippets', 'update_snippets_nonce' ); ?>
+    <div class="post-snippets-buttons-top">
     <?php
     \PostSnippets\Admin::submit( 'update-snippets', __( 'Update Snippets', 'post-snippets' ), 'button-primary', false );
     \PostSnippets\Admin::submit( 'add-snippet', __( 'Add New Snippet', 'post-snippets' ), 'button-secondary', false );
     \PostSnippets\Admin::submit( 'delete-snippets', __( 'Delete Selected', 'post-snippets' ), 'button-secondary', false );
     ?>
-    <br>
+    </div>
+
     <table class="widefat fixed mt-20 post-snippets-table" cellspacing="0">
         <thead>
         <tr>
@@ -21,6 +23,14 @@
         </tr>
         </thead>
     </table>
+
+    <div class="post-snippets post-snippets-list post-snippets-list-empty" style="display: none;">
+        <p>
+            <?php echo __('You\'ve just installed Post Snippets, awesome!', 'post-snippets'); ?><br />
+            <?php echo __('Click "Add New Snippet" to create your first snippet or read the documentation at the top right under "Help".', 'post-snippets'); ?>
+        </p>
+    </div>
+
     <?php
     $snippets = get_option( \PostSnippets::OPTION_KEY );
     if ( ! empty( $snippets ) ):?>
@@ -96,8 +106,10 @@
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
+<div class="post-snippets-buttons-bottom">
 <?php
 \PostSnippets\Admin::submit( 'update-snippets', __( 'Update Snippets', 'post-snippets' ), 'button-primary', false );
 \PostSnippets\Admin::submit( 'add-snippet', __( 'Add New Snippet', 'post-snippets' ), 'button-secondary', false );
 \PostSnippets\Admin::submit( 'delete-snippets', __( 'Delete Selected', 'post-snippets' ), 'button-secondary', false );
+echo '</div>';
 echo '</form>';

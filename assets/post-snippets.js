@@ -1,5 +1,23 @@
 jQuery(document).ready(function ($) {
     /**
+     * Check if there are any snippets
+     */
+    if (document.getElementsByClassName("post-snippets-item").length == 0) {
+        $(this).find(".post-snippets-list-empty").show();
+        $(this).find(".post-snippets-buttons-bottom").hide();
+        $(this).find(".post-snippets-table .expand-all").hide();
+        $(this).find(".post-snippets-table .collapse-all").hide();
+
+        $( 'input[name=update-snippets]' ).attr('class', 'button-secondary');
+        $( 'input[name=add-snippet]' ).attr('class', 'button-primary');
+
+        (function pulse(){
+            $( 'input[name=add-snippet]' ).first().delay(200).animate({'opacity':1}).delay(2000).animate({'opacity':0},pulse);
+        })();
+
+    }
+
+    /**
      * Loops through all snippets when page has loaded.
      */
     $("input[name$='_title']").each(function (index) {

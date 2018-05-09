@@ -98,6 +98,16 @@
 	box-shadow: none !important;
 	border:none !important;
 }
+
+.post-snippets-list-empty p {
+    background: #efefef;
+    border: 1px solid #d8d6d6;
+    text-align: center;
+    font-size: 25px;
+    padding: 35px 150px;
+    margin: 10px;
+}
+
 .post-snippets-item {
 	background: #efefef;
 	margin-bottom: 10px;
