@@ -47,7 +47,7 @@ if ( ! function_exists( 'postsnippets_fs' ) ) {
 					'is_require_payment' => false,
 				),
 				'menu'           => array (
-					'slug'           => 'post-snippets/post-snippets.php',
+					'slug'           => 'post-snippets',
 					'override_exact' => true,
 					'contact'        => false,
 					'account'        => true,
@@ -68,7 +68,7 @@ if ( ! function_exists( 'postsnippets_fs' ) ) {
 	do_action( 'postsnippets_fs_loaded' );
 
 	function postsnippets_fs_settings_url() {
-		return admin_url( 'options-general.php?page='.plugin_basename( dirname( __FILE__ ) ).'/'.__FILE__ );
+		return admin_url( 'options-general.php?page=post-snippets');
 	}
 
 	postsnippets_fs()->add_filter( 'connect_url', 'postsnippets_fs_settings_url' );
@@ -116,7 +116,7 @@ if ( ! function_exists( 'postsnippets_fs' ) ) {
 	}
 
 	if ( ! defined( 'PS_MAIN_PAGE_URL' ) ) {
-		define( 'PS_MAIN_PAGE_URL', esc_url( admin_url( 'options-general.php?page=' . PS_DIRECTORY . '/' . PS_MAIN_FILE ) ) );
+		define( 'PS_MAIN_PAGE_URL', esc_url( admin_url( 'options-general.php?page=post-snippets' ) ) );
 	}
 
 	class PostSnippets {
