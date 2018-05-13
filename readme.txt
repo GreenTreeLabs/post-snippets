@@ -4,7 +4,7 @@ Tags: custom snippet, custom shortcode, snippet, snippets, shortcode, shortcodes
 Requires at least: 3.3
 Tested up to: 4.9
 Requires PHP: 5.3
-Stable tag: 3.0.4
+Stable tag: 3.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,15 @@ your clients to be able to use PHP code in a post snippet.
 5. Easy to access inline documentation (top right 'Help' button in WordPress).
 
 == Changelog ==
+
+= Version 3.0.5 - 13 May 2018 =
+
+* Fix conflict with SiteOrigin Page Builder (Editor), increase z-index so Post Snippets Insert box opens on top of the editor
+* Only show submenu when Post Snippets is opened, not on all Settings pages, and remove Support Forum and Contact submenu items
+* Improve stability by updating Post Snippets to string-based menu slug
+* Add instructions and optimize UI for new users/new sites (with slightly pulsating "Add New Snippet" button)
+* Automatically disable Post Snippets if premium version is activated
+* Make 'Post Snippets' header title in plugin translatable
 
 = Version 3.0.4 - 20 Feb 2018 =
 
