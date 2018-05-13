@@ -4,20 +4,28 @@
     <div id="post-snippets-dialog" title="Post Snippets">
         <?php // Init the tabs div ?>
         <div id="post-snippets-tabs">
-            <ul>
+
                 <?php
-                // Create a tab for each available snippet
-                foreach ($snippets as $key => $snippet) {
+
+                if ( empty($snippets)) {
+                    echo sprintf(__('No snippets found, to create them go to &nbsp;&nbsp; %sPost Snippets &rarr;%s', 'post-snippets'), '<a href="'. admin_url( 'options-general.php?page=post-snippets') .'" class="button-primary">', '</a>');
+                } else {
                     ?>
-                    <li><a href="#ps-tabs-<?php echo $key;
-                    ?>"><?php echo $snippet['title'];
-                    ?></a></li>
-                <?php
+                <ul>
+                    <?php
+	                // Create a tab for each available snippet
+	                foreach ( $snippets as $key => $snippet ) {
+		                ?>
+                        <li><a href="#ps-tabs-<?php echo $key;
+			                ?>"><?php echo $snippet['title'];
+				                ?></a></li>
+		                <?php
+	                }
+	                ?>
+                </ul>
+              <?php
+                }
 
-                } ?>
-            </ul>
-
-            <?php
             // Create a panel with form fields for each available snippet
             foreach ($snippets as $key => $snippet) {
                 ?>
