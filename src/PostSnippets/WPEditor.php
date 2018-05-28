@@ -184,36 +184,38 @@ class WPEditor
 
         $snippetStack = array();
 
-        foreach ($snippets as $key => $snippet) {
-            if ($snippet['shortcode']) {
-                # Build a long string of the variables, ie: varname1={varname1} varname2={varname2}
-                # so {varnameX} can be replaced at runtime.
-                $var_arr = explode(",", $snippet['vars']);
-                $variables = '';
-                if (!empty($var_arr[0])) {
-                    foreach ($var_arr as $var) {
-                        $var = $this->stripDefaultVal($var);
+	  if (is_array($snippets) || is_object($snippets)) {
+		    foreach ( $snippets as $key => $snippet ) {
+			    if ( $snippet['shortcode'] ) {
+				    # Build a long string of the variables, ie: varname1={varname1} varname2={varname2}
+				    # so {varnameX} can be replaced at runtime.
+				    $var_arr   = explode( ",", $snippet['vars'] );
+				    $variables = '';
+				    if ( ! empty( $var_arr[0] ) ) {
+					    foreach ( $var_arr as $var ) {
+						    $var = $this->stripDefaultVal( $var );
 
-                        $variables .= ' ' . $var . '="{' . $var . '}"';
-                    }
-                }
-                $shortcode = $snippet['title'] . $variables;
-                array_push($snippetStack, "var postsnippet_{$key} = '[" . $shortcode . "]';\n");
-            } else {
-                // To use $snippet is probably not a good naming convention here.
-                // rename to js_snippet or something?
-                $snippet = $snippet['snippet'];
-                # Fixes for potential collisions:
-                /* Replace <> with char codes, otherwise </script> in a snippet will break it */
-                $snippet = str_replace('<', '\x3C', str_replace('>', '\x3E', $snippet));
-                /* Escape " with \" */
-                $snippet = str_replace('"', '\"', $snippet);
-                /* Remove CR and replace LF with \n to keep formatting */
-                $snippet = str_replace(chr(13), '', str_replace(chr(10), '\n', $snippet));
-                # Print out the variable containing the snippet
-                array_push($snippetStack, "var postsnippet_{$key} = \"" . $snippet . "\";\n");
-            }
-        }
+						    $variables .= ' ' . $var . '="{' . $var . '}"';
+					    }
+				    }
+				    $shortcode = $snippet['title'] . $variables;
+				    array_push( $snippetStack, "var postsnippet_{$key} = '[" . $shortcode . "]';\n" );
+			    } else {
+				    // To use $snippet is probably not a good naming convention here.
+				    // rename to js_snippet or something?
+				    $snippet = $snippet['snippet'];
+				    # Fixes for potential collisions:
+				    /* Replace <> with char codes, otherwise </script> in a snippet will break it */
+				    $snippet = str_replace( '<', '\x3C', str_replace( '>', '\x3E', $snippet ) );
+				    /* Escape " with \" */
+				    $snippet = str_replace( '"', '\"', $snippet );
+				    /* Remove CR and replace LF with \n to keep formatting */
+				    $snippet = str_replace( chr( 13 ), '', str_replace( chr( 10 ), '\n', $snippet ) );
+				    # Print out the variable containing the snippet
+				    array_push( $snippetStack, "var postsnippet_{$key} = \"" . $snippet . "\";\n" );
+			    }
+		    }
+	    }
         ?>
 
         <?php
