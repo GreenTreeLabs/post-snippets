@@ -357,7 +357,7 @@ class Admin {
 
         // Tabs
         $active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'snippets';
-        $base_url   = '?page=' . PS_DIRECTORY . '&amp;tab=';
+        $base_url   = '?page=post-snippets&amp;tab=';
         $tabs       = array(
             'snippets' => __( 'Manage Snippets', 'post-snippets' ),
             'options'  => __( 'Options', 'post-snippets' ),
