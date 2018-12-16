@@ -1,5 +1,5 @@
 === Post Snippets ===
-Contributors: GreenTreeLabs, davdebcom
+Contributors: GreenTreeLabs
 Tags: custom snippet, custom shortcode, snippet, snippets, shortcode, shortcodes, block, blocks, html
 Requires at least: 3.3
 Tested up to: 4.9
