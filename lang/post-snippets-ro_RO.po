@@ -247,7 +247,7 @@ msgstr "Construieste o bibliotecă, cu fragmente de cod HTML, codul PHP sau text
 
 #. Author of the plugin/theme
 msgid "Johan Steen"
-msgstr "David de Boer"
+msgstr "GreenTreeLabs"
 
 #. Author URI of the plugin/theme
 msgid "https://code.bitbebop.com/"

@@ -39,7 +39,7 @@
 		getInfo : function() {
 			return {
 					longname  : 'Post Snippets',
-					author 	  : 'David de Boer',
+					author 	  : 'GreenTreeLabs',
 					authorurl : 'https://www.postsnippets.com/',
 					infourl   : 'https://www.postsnippets.com/',
 					version   : '1.9'

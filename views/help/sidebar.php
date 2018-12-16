@@ -10,7 +10,7 @@
 _e('Support', 'post-snippets');
 ?></a></p>
 
-<p><a href="https://github.com/davdebcom/post-snippets" target="_blank"><?php
+<p><a href="https://github.com/GreenTreeLabs/post-snippets" target="_blank"><?php
 _e('GitHub', 'post-snippets');
 ?></a></p>
 

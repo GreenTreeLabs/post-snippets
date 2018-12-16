@@ -106,7 +106,7 @@ msgstr "מאחסן סניפטים (קטעי קוד) של שפת HTML או טקס
 
 #. Author of an extension
 msgid "Johan Steen"
-msgstr "‫David de Boer"
+msgstr "‫GreenTreeLabs"
 
 #. Author URI of an extension
 msgid "http://coding.cglounge.com/"

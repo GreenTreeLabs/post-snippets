@@ -6,7 +6,7 @@ namespace PostSnippets;
  * Post Snippets Features.
  *
  *
- * @author   David de Boer <david at postsnippets dot com>
+ * @author   GreenTreeLabs <info at postsnippets dot com>
  * @link     https://www.postsnippets.com
  */
 
@@ -127,7 +127,7 @@ ob_start();
 		                    <?php _e( 'By voting you are automatically subscribed to the Post Snippets newsletter, and you can unsubscribe at anytime.', 'post-snippets' ); ?>
                         </p>
 
-						<p class="ps_features_wrap_intro"><?php _e( 'Other suggestions? Send an email to <a href="mailto:david@postsnippets.com">david@postsnippets.com</a>.', 'post-snippets' ); ?>
+						<p class="ps_features_wrap_intro"><?php _e( 'Other suggestions? Send an email to <a href="mailto:diego@greentreelabs.net">diego@greentreelabs.net</a>.', 'post-snippets' ); ?>
                         </p>
 
                         <p class="ps-votes-left" style="display: none;">

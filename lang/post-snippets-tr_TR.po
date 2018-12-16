@@ -102,7 +102,7 @@ msgstr "Yazılarınızda sıklıkla kullandığınız HTML kodu veya metinlerdek
 
 #. Author of an extension
 msgid "Johan Steen"
-msgstr "David de Boer"
+msgstr "GreenTreeLabs"
 
 #. Author URI of an extension
 msgid "http://coding.cglounge.com/"

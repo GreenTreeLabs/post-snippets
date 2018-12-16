@@ -122,7 +122,7 @@ msgstr "Almacena de snippets(fragmentos) de código HTML o texto recurrente para
 
 #. Author of an extension
 msgid "Johan Steen"
-msgstr "David de Boer"
+msgstr "GreenTreeLabs"
 
 #. Author URI of an extension
 msgid "http://coding.cglounge.com/"

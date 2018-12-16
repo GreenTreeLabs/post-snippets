@@ -5,7 +5,7 @@
  *
  * @package    PS
  * @subpackage Views
- * @author     David de Boer <david@postsnippets.com>
+ * @author     GreenTreeLabs <diego@greentreelabs.net>
  */
 
 // Exit if accessed directly.

@@ -3,10 +3,10 @@
  * Post Snippets
  *
  * @package         PS
- * @author          David de Boer <david@davdeb.com>
+ * @author          GreenTreeLabs <diego@greentreelabs.net>
  * @license         GPL-2.0+
  * @link            https://www.postsnippets.com
- * @copyright       2017-2018 David de Boer
+ * @copyright       2017-2018 GreenTreeLabs
  * @copyright       2009-2017 Johan Steen
  *
  * @wordpress-plugin
@@ -14,7 +14,7 @@
  * Plugin URI: https://www.postsnippets.com
  * Description: Create a library of reusable content and insert it into your posts and pages. Navigate to "Settings > Post Snippets" to get started.
  * Version: 3.0.5
- * Author: David de Boer
+ * Author: GreenTreeLabs
  * Author URI: https://www.postsnippets.com
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
