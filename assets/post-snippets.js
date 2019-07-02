@@ -219,4 +219,235 @@ jQuery(document).ready(function ($) {
         return true ;
     });
 
+    $(".snippet-delete").click(function (e) {
+        e.preventDefault();
+        var $el = $(this);
+        var id = $(this).data("target");
+
+        if($(this).data("deleting"))
+            return;
+
+        var key = $(this).data("key");
+        var data = {
+            'action': 'delete_post_snippet',
+            'key': key,
+            'delete_snippet': $("#delete_snippet").val()
+        };
+        $(this).data("deleting", true);
+        $("#delete-confirm strong").text($("#" + id + "-title").text());
+
+        $( "#delete-confirm" ).dialog({
+            resizable: false,
+            height: "auto",
+            width: 400,
+            modal: true,
+            buttons: {
+              Cancel: function() {
+                $(this).data("deleting", false);
+                $( this ).dialog( "close" );
+              },
+              "Delete snippet": function() {
+                $( this ).dialog( "close" );
+                $.post(ajaxurl, data, function (res) {
+                    if(res.success){
+                        $el.parents(".post-snippets-item").remove();
+                    }else{
+                     alert(res.data);
+                    }
+                });
+              },
+            }
+        });
+	});
+
+	$("[data-ps-download]").click(function (e) {
+		e.preventDefault();
+
+		var data = {
+            'action': 'sync_list',
+            'sync_down': $("#sync_down").val()
+		};
+		$("#sp-loading").show();
+		$.post(ajaxurl, data, function (res) {
+			$("#sp-loading").hide();
+
+			if(res.data.data.length == 0) {
+				$("#sync-down-list .message").show().text("You have no saved snippets yet");
+			} else {
+				$("#sync-down-list .message").hide();
+			}
+
+			$("#sync-down-list table tbody").empty();
+			$.each(res.data.data, function () {
+				var $tr = $("<tr><td></td><td></td><td></td><td></td><td></td></tr>");
+				$tr.find("td").eq(0).append("<input type='checkbox' value='"+ this.id +"' />");
+				$tr.find("td").eq(1).append(this.title);
+				$tr.find("td").eq(2).append(this.description ? this.description : "-");
+				$tr.find("td").eq(3).append(this.vars);
+				$tr.find("td").eq(4).append("<textarea readonly>"+ this.snippet +"</textarea>")
+				$("#sync-down-list table tbody").append($tr);
+
+				$tr.find("input").click(function() {
+					var count = $("#sync-down-list table tbody input:checked").length;
+					$(".ui-dialog-buttonpane button").last().text("Add ("+ count +") selected");
+				});
+			});
+
+			$("#sync-down-list [data-toggle-all]").off("click").on("click", function () {
+				var checked = this.checked;
+				$("#sync-down-list table tbody input").each(function () {
+					this.checked = checked;
+				})
+
+				var count = $("#sync-down-list table tbody input:checked").length;
+				$(".ui-dialog-buttonpane button").last().text("Add ("+ count +") selected");
+			});
+
+			$("#sync-down-list").dialog({
+				resizable: false,
+				height: "auto",
+				width: 800,
+				modal: true,
+				buttons: {
+					Cancel: function() {
+					  $( this ).dialog( "close" );
+					},
+					"Add (0) selected": function () {
+						var selected = [];
+						$("#sync-down-list table tbody input:checked").each(function () {
+							selected.push(this.value);
+						})
+
+						if(selected.length == 0) {
+							return;
+						}
+
+						var data = {
+							'action': 'sync',
+							'ids': selected.join(','),
+							'sync_up': $("#sync_up").val()
+						};
+
+						$( this ).dialog( "close" );
+						$("#sp-loading").show();
+						$.post(ajaxurl, data, function (res) {
+							$("#sp-loading").hide();
+							if(res.success){
+								$("#sync-success").dialog({
+									resizable: false,
+									height: "auto",
+									modal: true,
+									closeOnEscape: false,
+									buttons: {
+										"Ok": function() {
+											location.href = location.href + "&reload=" + Math.random();
+										}
+									},
+									close: function() {
+										location.href = location.href + "&reload=" + Math.random();
+									}
+								})
+							}
+						});
+					}
+				}
+			});
+		});
+	});
+
+	$("[data-sync-up]").click(function (e) {
+		e.preventDefault();
+
+		var key = $(this).data("key");
+		var data = {
+            'action': 'sync_up',
+			'key': key,
+			'update': 0,
+            'sync_up': $("#sync_up").val()
+		};
+
+		var id = $(this).data("target");
+		$("#sync-up-confirm strong").text($("#" + id + "-title").text());
+
+		$( "#sync-up-confirm" ).dialog({
+            resizable: false,
+            height: "auto",
+            width: 400,
+            modal: true,
+            buttons: {
+              Cancel: function() {
+                $( this ).dialog( "close" );
+              },
+              "Save snippet": function() {
+				$( this ).dialog( "close" );
+				$("#sp-loading").show();
+                $.post(ajaxurl, data, function (res) {
+					$("#sp-loading").hide();
+                    if(res.success){
+                        $("#sync-up-success").dialog({
+							resizable: false,
+							height: "auto",
+							width: 300,
+							modal: true
+						});
+                    } else{
+						if(res.data.code == "2") {
+							var snippet = JSON.parse(res.data.message);
+							snippet.options = JSON.parse(snippet.options);
+
+							$("#sync-update-confirm [data-title]").text(snippet.title);
+							$("#sync-update-confirm [data-description]").text(snippet.description);
+							$("#sync-update-confirm textarea").val(snippet.snippet);
+							$("#sync-update-confirm [data-vars]").val(snippet.vars);
+
+							for(var k in snippet.options) {
+								if(snippet.options[k])
+								$("#sync-update-confirm [data-options]").append("<i class='dashicons dashicons-yes'></i> " + k);
+							}
+							//$("#sync-update-confirm [data-options]").text(snippet.options);
+
+							$("#sync-update-confirm").dialog({
+								resizable: false,
+								height: "auto",
+								width: 600,
+								modal: true,
+								buttons: {
+									Cancel: function() {
+									  $( this ).dialog( "close" );
+									},
+									Update: function () {
+										$( this ).dialog( "close" );
+										$("#sp-loading").show();
+										data.update = 1;
+										$.post(ajaxurl, data, function (res) {
+											$("#sp-loading").hide();
+											if(res.success){
+												$("#sync-up-success").dialog({
+													resizable: false,
+													height: "auto",
+													width: 300,
+													modal: true
+												});
+											} else {
+												$("#sync-up-error [data-error]").html("code: " + res.data.code + "<br>message: " + res.data.message);
+											}
+										});
+									}
+								}
+							});
+						} else {
+							$("#sync-up-error [data-error]").html("code: " + res.data.code + "<br>message: " + res.data.message);
+							$("#sync-up-error").dialog({
+								resizable: false,
+								height: "auto",
+								width: 400,
+								modal: true
+							});
+						}
+                    }
+                });
+              },
+            }
+        });
+	});
 });

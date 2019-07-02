@@ -1,10 +1,9 @@
 === Post Snippets ===
-Contributors: GreenTreeLabs
+Contributors: GreenTreeLabs, freemius
 Tags: custom snippet, custom shortcode, snippet, snippets, shortcode, shortcodes, block, blocks, html
 Requires at least: 3.3
-Tested up to: 4.9
+Tested up to: 5.1
 Requires PHP: 5.3
-Stable tag: 3.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +95,32 @@ your clients to be able to use PHP code in a post snippet.
 5. Easy to access inline documentation (top right 'Help' button in WordPress).
 
 == Changelog ==
+
+= Version 3.0.11 - 2 Lug 2019 =
+
+* Added language pack for TinyMCE
+
+= Version 3.0.10 - 2 Lug 2019 =
+
+* Updated Freemius SDK
+* Added compatibility with PHP 7.3
+
+= Version 3.0.9 - 1 Lug 2019 =
+
+* Updated Freemius SDK (Premium only)
+
+= Version 3.0.8 - 8 Apr 2019 =
+
+* Added multi-site snippets sync feature (Premium only)
+
+= Version 3.0.7 - 27 Feb 2019 =
+
+* Removed unused function
+
+= Version 3.0.6 - 27 Feb 2019 =
+
+* Security Fix
+* Rich Text Format (PRO version only)
 
 = Version 3.0.5 - 13 May 2018 =
 
@@ -517,6 +542,11 @@ your clients to be able to use PHP code in a post snippet.
  * Initial Release
 
 == Upgrade Notice ==
+
+= Version 3.0.10 - 2 Lug 2019 =
+
+* Updated Freemius SDK
+* Added compatibility with PHP 7.3
 
 = 1.9 =
 Note that starting with this version and moving forward, at least PHP v5.2.4 is

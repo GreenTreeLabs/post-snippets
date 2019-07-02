@@ -94,7 +94,7 @@
 		'activate-x-now'                => _fs_x( 'Complete "%s" Activation Now',
 			'%s - plugin name. As complete "Jetpack" activation now' ),
 		'few-plugin-tweaks'             => _fs_text( 'We made a few tweaks to the %s, %s' ),
-		'optin-x-now'                   => _fs_text( 'Opt in to make "%s" Better!' ),
+		'optin-x-now'                   => _fs_text( 'Opt in to make "%s" better!' ),
 		'error'                         => _fs_text( 'Error' ),
 		'failed-finding-main-path'      => _fs_text( 'Freemius SDK couldn\'t find the plugin\'s main file. Please contact sdk@freemius.com with the current error.' ),
         'learn-more'                    => _fs_text( 'Learn more' ),
@@ -215,7 +215,7 @@
 		'delete-account-confirm'       => _fs_text( 'Deletion is not temporary. Only delete if you no longer want to use this %s anymore. Are you sure you would like to continue with the deletion?' ),
 		'downgrade-x-confirm'          => _fs_text( 'Downgrading your plan will immediately stop all future recurring payments and your %s plan license will expire in %s.' ),
 		'cancel-trial-confirm'         => _fs_text( 'Cancelling the trial will immediately block access to all premium features. Are you sure?' ),
-		'after-downgrade-non-blocking' => _fs_text( 'You can still enjoy all %s features but you will not have access to %s updates and support.' ),
+		'after-downgrade-non-blocking' => _fs_text( 'You can still enjoy all %s features but you will not have access to %s security & feature updates, nor support.' ),
 		'after-downgrade-blocking'     => _fs_text( 'Once your license expires you can still use the Free version but you will NOT have access to the %s features.' ),
 		'proceed-confirmation'         => _fs_text( 'Are you sure you want to proceed?' ),
 		#endregion Account
@@ -465,8 +465,8 @@
 		'deactivate-plugin-title'                  => _fs_text( 'That\'s exhausting, please deactivate' ),
 		'deactivate-plugin-desc'                   => _fs_text( 'We feel your frustration and sincerely apologize for the inconvenience. Hope to see you again in the future.' ),
 		'fix-request-sent-message'                 => _fs_text( 'Thank for giving us the chance to fix it! A message was just sent to our technical staff. We will get back to you as soon as we have an update to %s. Appreciate your patience.' ),
-		'server-blocking-access'                   => _fs_x( 'Your server is blocking the access to Freemius\' API, which is crucial for %1s synchronization. Please contact your host to whitelist %2s',
-			'%1s - plugin title, %2s - API domain' ),
+		'server-blocking-access'                   => _fs_x( 'Your server is blocking the access to Freemius\' API, which is crucial for %1$s synchronization. Please contact your host to whitelist %2$s',
+			'%1$s - plugin title, %2$s - API domain' ),
 		'wrong-authentication-param-message'       => _fs_text( 'It seems like one of the authentication parameters is wrong. Update your Public Key, Secret Key & User ID, and try again.' ),
 		#endregion Connectivity Issues
 		#region Change Owner

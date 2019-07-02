@@ -86,9 +86,25 @@
     function fs_asset_url( $asset_abs_path ) {
         $wp_content_dir = fs_normalize_path( WP_CONTENT_DIR );
         $asset_abs_path = fs_normalize_path( $asset_abs_path );
-        $asset_rel_path = str_replace( $wp_content_dir, '', $asset_abs_path );
 
-        $asset_url = content_url( fs_normalize_path( $asset_rel_path ) );
+        if ( 0 === strpos( $asset_abs_path, $wp_content_dir ) ) {
+            // Handle both theme and plugin assets located in the standard directories.
+            $asset_rel_path = str_replace( $wp_content_dir, '', $asset_abs_path );
+            $asset_url      = content_url( fs_normalize_path( $asset_rel_path ) );
+        } else {
+            $wp_plugins_dir = fs_normalize_path( WP_PLUGIN_DIR );
+            if ( 0 === strpos( $asset_abs_path, $wp_plugins_dir ) ) {
+                // Try to handle plugin assets that may be located in a non-standard plugins directory.
+                $asset_rel_path = str_replace( $wp_plugins_dir, '', $asset_abs_path );
+                $asset_url      = plugins_url( fs_normalize_path( $asset_rel_path ) );
+            } else {
+                // Try to handle theme assets that may be located in a non-standard themes directory.
+                $active_theme_stylesheet = get_stylesheet();
+                $wp_themes_dir           = fs_normalize_path( trailingslashit( get_theme_root( $active_theme_stylesheet ) ) );
+                $asset_rel_path          = str_replace( $wp_themes_dir, '', fs_normalize_path( $asset_abs_path ) );
+                $asset_url               = trailingslashit( get_theme_root_uri( $active_theme_stylesheet ) ) . fs_normalize_path( $asset_rel_path );
+            }
+        }
 
         return $asset_url;
     }
@@ -111,6 +127,9 @@
 
     if ( ! function_exists( 'fs_request_get' ) ) {
         /**
+         * A helper method to fetch GET/POST user input with an optional default value when the input is not set.
+         * @author Vova Feldman (@svovaf)
+         *
          * @param string      $key
          * @param mixed       $def
          * @param string|bool $type Since 1.2.1.7 - when set to 'get' will look for the value passed via querystring, when
@@ -124,6 +143,10 @@
                 $type = strtolower( $type );
             }
 
+            /**
+             * Note to WordPress.org Reviewers:
+             *  This is a helper method to fetch GET/POST user input with an optional default value when the input is not set. The actual sanitization is done in the scope of the function's usage.
+             */
             switch ( $type ) {
                 case 'post':
                     $value = isset( $_POST[ $key ] ) ? $_POST[ $key ] : $def;
@@ -147,17 +170,39 @@
     }
 
     if ( ! function_exists( 'fs_request_get_bool' ) ) {
+        /**
+         * A helper method to fetch GET/POST user boolean input with an optional default value when the input is not set.
+         *
+         * @author Vova Feldman (@svovaf)
+         *
+         * @param string $key
+         * @param bool $def
+         *
+         * @return bool|mixed
+         */
         function fs_request_get_bool( $key, $def = false ) {
-            if ( ! isset( $_REQUEST[ $key ] ) ) {
+            $val = fs_request_get( $key, null );
+
+            if ( is_null( $val ) ) {
                 return $def;
             }
 
-            if ( 1 == $_REQUEST[ $key ] || 'true' === strtolower( $_REQUEST[ $key ] ) ) {
-                return true;
-            }
+            if ( is_bool( $val ) ) {
+                return $val;
+            } else if ( is_numeric( $val ) ) {
+                if ( 1 == $val ) {
+                    return true;
+                } else if ( 0 == $val ) {
+                    return false;
+                }
+            } else if ( is_string( $val ) ) {
+                $val = strtolower( $val );
 
-            if ( 0 == $_REQUEST[ $key ] || 'false' === strtolower( $_REQUEST[ $key ] ) ) {
-                return false;
+                if ( 'true' === $val ) {
+                    return true;
+                } else if ( 'false' === $val ) {
+                    return false;
+                }
             }
 
             return $def;
@@ -709,98 +754,7 @@
             return $key;
         }
 
-        /**
-         * Get a translatable text override if exists, or `false`.
-         *
-         * @author Vova Feldman (@svovaf)
-         * @since  1.2.1.7
-         *
-         * @param string $text Translatable string.
-         * @param string $key  String key for overrides.
-         * @param string $slug Module slug for overrides.
-         *
-         * @return string|false
-         */
-        function fs_text_override( $text, $key, $slug ) {
-            global $fs_text_overrides;
-
-            /**
-             * Check if string is overridden.
-             */
-            if ( ! isset( $fs_text_overrides[ $slug ] ) ) {
-                return false;
-            }
-
-            if ( empty( $key ) ) {
-                $key = strtolower( str_replace( ' ', '-', $text ) );
-            }
-
-            if ( isset( $fs_text_overrides[ $slug ][ $key ] ) ) {
-                return $fs_text_overrides[ $slug ][ $key ];
-            }
-
-            $lower_key = strtolower( $key );
-            if ( isset( $fs_text_overrides[ $slug ][ $lower_key ] ) ) {
-                return $fs_text_overrides[ $slug ][ $lower_key ];
-            }
-
-            return false;
-        }
-
-        /**
-         * Get a translatable text and its text domain.
-         *
-         * When the text is overridden by the module, returns the overridden text and the text domain of the module. Otherwise, returns the original text and 'freemius' as the text domain.
-         *
-         * @author Vova Feldman (@svovaf)
-         * @since  1.2.1.7
-         *
-         * @param string $text Translatable string.
-         * @param string $key  String key for overrides.
-         * @param string $slug Module slug for overrides.
-         *
-         * @return string[]
-         */
-        function fs_text_and_domain( $text, $key, $slug ) {
-            $override = fs_text_override( $text, $key, $slug );
-
-            if ( false === $override ) {
-                // No override, use FS text domain.
-                $text_domain = 'freemius';
-            } else {
-                // Found an override.
-                $text = $override;
-                // Use the module's text domain.
-                $text_domain = $slug;
-            }
-
-            return array( $text, $text_domain );
-        }
-
         #region Private
-
-        /**
-         * Retrieve an inline translated text by key.
-         *
-         * @author Vova Feldman (@svovaf)
-         * @since  1.2.3
-         *
-         * @param string $text Translatable string.
-         * @param string $key  String key for overrides.
-         * @param string $slug Module slug for overrides.
-         *
-         * @return string
-         *
-         * @global       $fs_text_overrides
-         */
-        function _fs_text_inline( $text, $key = '', $slug = 'freemius' ) {
-            list( $text, $text_domain ) = fs_text_and_domain( $text, $key, $slug );
-
-            // Avoid misleading Theme Check warning.
-            $fn = 'translate';
-
-            return $fn( $text, $text_domain );
-        }
 
         /**
          * Retrieve an inline translated text by key with a context.
@@ -827,24 +781,6 @@
         }
 
         #endregion
-
-        /**
-         * Retrieve an inline translated text by key.
-         *
-         * @author Vova Feldman (@svovaf)
-         * @since  1.2.3
-         *
-         * @param string $text Translatable string.
-         * @param string $key  String key for overrides.
-         * @param string $slug Module slug for overrides.
-         *
-         * @return string
-         *
-         * @global       $fs_text_overrides
-         */
-        function fs_text_inline( $text, $key = '', $slug = 'freemius' ) {
-            return _fs_text_inline( $text, $key, $slug );
-        }
 
         /**
          * Retrieve an inline translated text by key with a context.
@@ -905,6 +841,123 @@
          */
         function fs_echo_x_inline( $text, $context, $key = '', $slug = 'freemius' ) {
             echo _fs_text_x_inline( $text, $context, $key, $slug );
+        }
+    }
+
+    if ( ! function_exists( 'fs_text_override' ) ) {
+        /**
+         * Get a translatable text override if exists, or `false`.
+         *
+         * @author Vova Feldman (@svovaf)
+         * @since  1.2.1.7
+         *
+         * @param string $text Translatable string.
+         * @param string $key  String key for overrides.
+         * @param string $slug Module slug for overrides.
+         *
+         * @return string|false
+         */
+        function fs_text_override( $text, $key, $slug ) {
+            global $fs_text_overrides;
+
+            /**
+             * Check if string is overridden.
+             */
+            if ( ! isset( $fs_text_overrides[ $slug ] ) ) {
+                return false;
+            }
+
+            if ( empty( $key ) ) {
+                $key = strtolower( str_replace( ' ', '-', $text ) );
+            }
+
+            if ( isset( $fs_text_overrides[ $slug ][ $key ] ) ) {
+                return $fs_text_overrides[ $slug ][ $key ];
+            }
+
+            $lower_key = strtolower( $key );
+            if ( isset( $fs_text_overrides[ $slug ][ $lower_key ] ) ) {
+                return $fs_text_overrides[ $slug ][ $lower_key ];
+            }
+
+            return false;
+        }
+    }
+
+    if ( ! function_exists( 'fs_text_and_domain' ) ) {
+        /**
+         * Get a translatable text and its text domain.
+         *
+         * When the text is overridden by the module, returns the overridden text and the text domain of the module. Otherwise, returns the original text and 'freemius' as the text domain.
+         *
+         * @author Vova Feldman (@svovaf)
+         * @since  1.2.1.7
+         *
+         * @param string $text Translatable string.
+         * @param string $key  String key for overrides.
+         * @param string $slug Module slug for overrides.
+         *
+         * @return string[]
+         */
+        function fs_text_and_domain( $text, $key, $slug ) {
+            $override = fs_text_override( $text, $key, $slug );
+
+            if ( false === $override ) {
+                // No override, use FS text domain.
+                $text_domain = 'freemius';
+            } else {
+                // Found an override.
+                $text = $override;
+                // Use the module's text domain.
+                $text_domain = $slug;
+            }
+
+            return array( $text, $text_domain );
+        }
+    }
+
+    if ( ! function_exists( '_fs_text_inline' ) ) {
+        /**
+         * Retrieve an inline translated text by key.
+         *
+         * @author Vova Feldman (@svovaf)
+         * @since  1.2.3
+         *
+         * @param string $text Translatable string.
+         * @param string $key  String key for overrides.
+         * @param string $slug Module slug for overrides.
+         *
+         * @return string
+         *
+         * @global       $fs_text_overrides
+         */
+        function _fs_text_inline( $text, $key = '', $slug = 'freemius' ) {
+            list( $text, $text_domain ) = fs_text_and_domain( $text, $key, $slug );
+
+            // Avoid misleading Theme Check warning.
+            $fn = 'translate';
+
+            return $fn( $text, $text_domain );
+        }
+    }
+
+    if ( ! function_exists( 'fs_text_inline' ) ) {
+        /**
+         * Retrieve an inline translated text by key.
+         *
+         * @author Vova Feldman (@svovaf)
+         * @since  1.2.3
+         *
+         * @param string $text Translatable string.
+         * @param string $key  String key for overrides.
+         * @param string $slug Module slug for overrides.
+         *
+         * @return string
+         *
+         * @global       $fs_text_overrides
+         */
+        function fs_text_inline( $text, $key = '', $slug = 'freemius' ) {
+            return _fs_text_inline( $text, $key, $slug );
         }
     }
 

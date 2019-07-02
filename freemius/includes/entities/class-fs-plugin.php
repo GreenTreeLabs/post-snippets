@@ -25,6 +25,13 @@
          */
         public $slug;
         /**
+         * @author Leo Fajardo (@leorw)
+         * @since 2.2.1
+         *
+         * @var string
+         */
+        public $premium_slug;
+        /**
          * @since 1.2.2
          *
          * @var string 'plugin' or 'theme'
@@ -42,6 +49,13 @@
          * @var bool Set to true if the free version of the module is hosted on WordPress.org. Defaults to true.
          */
         public $is_wp_org_compliant = true;
+        /**
+         * @author Leo Fajardo (@leorw)
+         * @since 2.2.5
+         *
+         * @var int
+         */
+        public $premium_releases_count;
 
         #region Install Specific Properties
 
@@ -68,11 +82,23 @@
          */
         public $is_premium;
         /**
+         * @author Leo Fajardo (@leorw)
+         * @since 2.2.1
+         *
+         * @var string
+         */
+        public $premium_suffix;
+        /**
          * @since 1.0.9
          *
          * @var bool
          */
         public $is_live;
+        /**
+         * @since 2.2.3
+         * @var null|number
+         */
+        public $bundle_id;
 
         const AFFILIATE_MODERATION_CUSTOMERS = 'customers';
 
@@ -86,6 +112,14 @@
 
             $this->is_premium = false;
             $this->is_live    = true;
+
+            if ( empty( $this->premium_slug ) && ! empty( $plugin->slug ) ) {
+                $this->premium_slug = "{$this->slug}-premium";
+            }
+
+            if ( empty( $this->premium_suffix ) ) {
+                $this->premium_suffix = '(Premium)';
+            }
 
             if ( isset( $plugin->info ) && is_object( $plugin->info ) ) {
                 $this->info = new FS_Plugin_Info( $plugin->info );

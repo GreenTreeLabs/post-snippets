@@ -68,13 +68,6 @@ class Features {
 				'form-id'        => '6485580'
 			),
 			array (
-				'title'          => __( 'Rich Text Editor', 'post-snippets' ),
-				'image'          => '',
-				'description'    => __( 'Create beautiful snippet content with formatting and images.', 'post-snippets' ),
-				'form-action-id' => 'h4i6i5',
-				'form-id'        => '6154073'
-			),
-			array (
 				'title'          => __( 'Conditional Logic', 'post-snippets' ),
 				'image'          => '',
 				'description'    => __( 'Show snippet content only on certain posts/pages, dates or for certain users.', 'post-snippets' ),

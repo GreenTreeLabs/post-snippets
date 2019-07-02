@@ -34,8 +34,12 @@ class Shortcode
                     add_shortcode(
                         $snippet['title'],
                         function ( $atts, $content = null ) use ( $snippet, $texturize, $default_atts ) {
-                            extract( shortcode_atts( $default_atts, $atts ) );
-                            $attributes = compact( array_keys( $default_atts ) );
+							extract( shortcode_atts( $default_atts, $atts ) );
+							foreach(array_keys( $default_atts ) as $key) {
+								$attributes[$key] = isset(${"$key"}) ? ${"$key"} : null;
+							}
+							//print_r($attributes);
+                            //$attributes = compact( array_keys( $default_atts ) );
                             // Add enclosed content if available to the attributes array
                             if ( $content != null ) {
                                 $attributes["content"] = $content;
